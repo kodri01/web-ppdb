@@ -17,7 +17,7 @@
                             <h4>Total Siswa Mendaftar</h4>
                         </div>
                         <div class="card-body">
-                            {{ $siswaDaftar }}
+                            <h2> {{ $siswaDaftar }} </h2>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="card-body">
-                            {{ $siswaLolos }}
+                            <h2> {{ $siswaLolos }} </h2>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                             <h4>Total Siswa Tidak Lolos</h4>
                         </div>
                         <div class="card-body">
-                            {{ $siswaGagal }}
+                            <h2> {{ $siswaGagal }} </h2>
                         </div>
                     </div>
                 </div>
