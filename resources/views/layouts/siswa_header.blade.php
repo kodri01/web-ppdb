@@ -53,7 +53,7 @@
 
                     </ul>
                     <div>
-                        <h4 class="text-white"><strong>PPDB SD Negeri 11 Kota Jambi</strong></h4>
+                        <h4 class="text-white mt-2"><strong>PPDB SD Negeri 11 Kota Jambi</strong></h4>
                     </div>
                 </form>
                 <ul class="navbar-nav navbar-right">
