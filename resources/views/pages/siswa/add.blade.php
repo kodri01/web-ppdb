@@ -305,13 +305,15 @@
                                     <div class="form-group">
                                         <label>Pendapatan Bulanan Ayah <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <input type="number"
-                                            class="form-control @error('pendapatan_ayah') is-invalid @enderror"
-                                            name="pendapatan_ayah" placeholder="Rp. 123.123"
-                                            value="{{ old('pendapatan_ayah') }}">
-                                        @error('pendapatan_ayah')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
+                                        <select name="pendapatan_ayah" id="kewarganegaraan" class="form-control">
+                                            <option value="">- Pilih Pendapatan -</option>
+                                            <option value="Rp. 1.000.000 - Rp. 2.500.000">Rp. 1.000.000 - Rp.
+                                                2.500.000</option>
+                                            <option value="Rp. 2.500.000 - Rp. 5.000.000">Rp. 2.500.000 - Rp.
+                                                5.000.000</option>
+                                            <option value="Rp. 5.000.000 - Rp. 10.000.000">Rp. 5.000.000 - Rp.
+                                                10.000.000</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Nama Ibu <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -353,13 +355,15 @@
                                     <div class="form-group">
                                         <label>Pendapatan Bulanan Ibu <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <input type="number"
-                                            class="form-control @error('pendapatan_ibu') is-invalid @enderror"
-                                            name="pendapatan_ibu" placeholder="Rp. 123.123"
-                                            value="{{ old('pendapatan_ibu') }}">
-                                        @error('pendapatan_ibu')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
+                                        <select name="pendapatan_ibu" id="kewarganegaraan" class="form-control">
+                                            <option value="">- Pilih Pendapatan -</option>
+                                            <option value="Rp. 1.000.000 - Rp. 2.500.000">Rp. 1.000.000 - Rp.
+                                                2.500.000</option>
+                                            <option value="Rp. 2.500.000 - Rp. 5.000.000">Rp. 2.500.000 - Rp.
+                                                5.000.000</option>
+                                            <option value="Rp. 5.000.000 - Rp. 10.000.000">Rp. 5.000.000 - Rp.
+                                                10.000.000</option>
+                                        </select>
                                     </div>
 
                                     <br>
