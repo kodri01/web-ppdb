@@ -56,20 +56,32 @@
                                                 <td>{{ $s->status == 0 ? 'Tidak Lolos' : 'Lolos' }}
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('update.siswa', $s->id) }}" method="post"
-                                                        class="d-inline">
-                                                        @csrf
-                                                        <button class="btn btn-sm btn-success"
-                                                            type="submit">Seleksi</button>
-                                                    </form>
-                                                    <form action="{{ route('delete.siswa', $s->id) }}" method="post"
-                                                        class="d-inline">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <button class="btn btn-sm btn-danger"
-                                                            onclick="return confirm('Anda Yakin Akan Menghapus Data Ini ?')"
-                                                            type="submit">Delete</button>
-                                                    </form>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-4 col-md-4 col-lg-4  d-inline-flex">
+                                                            <form action="{{ route('update.siswa', $s->id) }}"
+                                                                method="post" class="d-inline">
+                                                                @csrf
+                                                                <button class="btn btn-sm btn-success"
+                                                                    type="submit">Seleksi</button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                                            <a href="{{ route('details.siswa', $s->id) }}"
+                                                                class="btn btn-sm btn-primary ">Details</a>
+                                                        </div>
+                                                        <div class="col-sm-4 col-md-4 col-lg-4 d-inline-flex">
+                                                            <form action="{{ route('delete.siswa', $s->id) }}"
+                                                                method="post" class="d-inline">
+                                                                @csrf
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                <button class="btn btn-sm btn-danger"
+                                                                    onclick="return confirm('Anda Yakin Akan Menghapus Data Ini ?')"
+                                                                    type="submit">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+
                                                 </td>
                                             </tr>
                                         @endforeach

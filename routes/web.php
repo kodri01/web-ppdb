@@ -27,7 +27,7 @@ Route::get('siswa/login', [LoginController::class, 'siswa'])->name('siswa.login'
 Route::post('siswa/loggin', [LoginController::class, 'login_siswa'])->name('siswa.loggin');
 
 Route::get('siswa/register', [RegisterController::class, 'index'])->name('siswa.register');
-Route::post('siswa/store', [RegisterController::class, 'store'])->name('siswa.store');
+Route::post('store', [RegisterController::class, 'store'])->name('siswa.store');
 
 Route::get('dashboard/siswa', [DashboardController::class, 'dashboard_siswa'])->name('dashboard.siswa');
 Route::get('logout/siswa', [LoginController::class, 'logout_siswa'])->name('logout.siswa');
@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('siswa', [SiswaController::class, 'index'])->name('data.siswa');
     Route::get('siswa/add', [SiswaController::class, 'create'])->name('add.siswa');
+    Route::get('siswa/show/{id}', [SiswaController::class, 'show'])->name('details.siswa');
     Route::post('siswa/store', [SiswaController::class, 'store'])->name('store.siswa');
     Route::post('siswa/update/{id}', [SiswaController::class, 'update'])->name('update.siswa');
     Route::delete('siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('delete.siswa');

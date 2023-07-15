@@ -164,9 +164,12 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function show(Siswa $siswa)
+    public function show($id)
     {
-        //
+        $title = 'Details Siswa';
+        $judul = 'Details Baru';
+        $siswa = Siswa::find($id);
+        return view('pages.siswa.show', compact('judul', 'title', 'siswa'));
     }
 
     /**

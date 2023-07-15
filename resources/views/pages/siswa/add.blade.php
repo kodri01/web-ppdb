@@ -364,7 +364,8 @@
 
                                     <br>
                                     <div class="modal-footer bg-whitesmoke br">
-                                        <a href="tampilData.php" type="button" class="btn btn-secondary">Batal</a>
+                                        <a href="{{ route('data.siswa') }}" type="button"
+                                            class="btn btn-secondary">Batal</a>
                                         <button class="btn btn-primary" type="submit">Simpan</button>
                                     </div>
                                 </div>

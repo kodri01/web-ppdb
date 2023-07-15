@@ -60,7 +60,8 @@
                     <!-- klo mau nambah menu notifikasi langsung ke websitenya aja (https://getstisla.com/) -->
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="assets/img/avatar/avatar-5.png" class="rounded-circle mr-1">
+                            <img alt="image" src="{{ url('assets/img/avatar/avatar-5.png') }}"
+                                class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -75,11 +76,13 @@
             <div class="main-sidebar">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href=""><img src="assets/img/avatar/icone.png" alt="LP" width="30px">
+                        <a href=""><img src="{{ url('assets/img/avatar/icone.png') }}" alt="LP"
+                                width="30px">
                             PPDB</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href=""><img src="assets/img/avatar/icone.png" alt="LP" width="47px"></a>
+                        <a href=""><img src="{{ url('assets/img/avatar/icone.png') }}" alt="LP"
+                                width="47px"></a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Menu</li>
@@ -89,7 +92,7 @@
                                     class="fas fa-fire"></i>
                                 <span>Dashboard</span></a></li>
 
-                        <li <?php if ($title == 'Data Siswa' || $title == 'Tambah Siswa') {
+                        <li <?php if ($title == 'Data Siswa' || $title == 'Tambah Siswa' || $title == 'Details Siswa') {
                             echo 'class="active"';
                         } ?>><a class="nav-link" href="{{ route('data.siswa') }}"><i
                                     class="fas fa-user"></i>

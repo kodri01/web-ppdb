@@ -56,9 +56,14 @@
                             </div>
                         </form>
 
-                        <div class="text-center mt-5 text-small">
-                            Developer : <a href="//linkedin.com/in/bejosuseno" target="blank">Code Peka</a>
-                        </div>
+                        <center>
+                            <div class="container">
+                                <div class="copyright">
+                                    &copy; <strong><span>Universitas Dinamika Bangsa</span></strong> |
+                                    {{ \Carbon\Carbon::now()->year }}
+                                </div>
+                            </div>
+                        </center>
                     </div>
                 </div>
                 <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom"

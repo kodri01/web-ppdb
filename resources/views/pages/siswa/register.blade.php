@@ -255,7 +255,7 @@
                                                             style="color: red"></i></label>
                                                     <select name="tempat_tinggal" id="tempat_tinggal"
                                                         class="form-control" value="{{ old('tempat_tinggal') }}">
-                                                        <option value="">- Pilih -</option>
+                                                        <option value="">- Pilih Tempat Tinggal -</option>
                                                         <option value="Rumah">Rumah</option>
                                                         <option value="Kontrakan">Kontrakan</option>
                                                     </select>
@@ -265,7 +265,7 @@
                                                             style="color: red"></i></label>
                                                     <select name="moda_transport" id="moda_transport"
                                                         class="form-control" value="{{ old('moda_transport') }}">
-                                                        <option value="">- Pilih -</option>
+                                                        <option value="">- Pilih Moda Transport-</option>
                                                         <option value="Jalan Kaki">Jalan Kaki</option>
                                                         <option value="Sepeda Motor">Sepeda Motor</option>
                                                         <option value="Mobil">Mobil</option>
@@ -287,7 +287,7 @@
                                                             style="color: red"></i></label>
                                                     <select name="kewarganegaraan" id="kewarganegaraan"
                                                         class="form-control" value="{{ old('kewarganegaraan') }}">
-                                                        <option value="">- Pilih -</option>
+                                                        <option value="">- Pilih Kewarganegaraan-</option>
                                                         <option value="Indonesia">Indonesia</option>
                                                         <option value="Asing">Asing</option>
                                                     </select>
@@ -395,13 +395,16 @@
                                                     <label>Pendapatan Bulanan Ayah <i
                                                             class="fa fa-solid fa-star-of-life fa-xs"
                                                             style="color: red"></i></label>
-                                                    <input type="number"
-                                                        class="form-control @error('pendapatan_ayah') is-invalid @enderror"
-                                                        name="pendapatan_ayah" placeholder="Rp. 123.123"
-                                                        value="{{ old('pendapatan_ayah') }}">
-                                                    @error('pendapatan_ayah')
-                                                        <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror
+                                                    <select name="pendapatan_ayah" id="kewarganegaraan"
+                                                        class="form-control">
+                                                        <option value="">- Pilih Pendapatan -</option>
+                                                        <option value="Rp. 1.000.000 - Rp. 2.500.000">Rp. 1.000.000 - Rp.
+                                                            2.500.000</option>
+                                                        <option value="Rp. 2.500.000 - Rp. 5.000.000">Rp. 2.500.000 - Rp.
+                                                            5.000.000</option>
+                                                        <option value="Rp. 5.000.000 - Rp. 10.000.000">Rp. 5.000.000 - Rp.
+                                                            10.000.000</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Nama Ibu <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -446,13 +449,16 @@
                                                     <label>Pendapatan Bulanan Ibu <i
                                                             class="fa fa-solid fa-star-of-life fa-xs"
                                                             style="color: red"></i></label>
-                                                    <input type="number"
-                                                        class="form-control @error('pendapatan_ibu') is-invalid @enderror"
-                                                        name="pendapatan_ibu" placeholder="Rp. 123.123"
-                                                        value="{{ old('pendapatan_ibu') }}">
-                                                    @error('pendapatan_ibu')
-                                                        <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror
+                                                    <select name="pendapatan_ibu" id="kewarganegaraan"
+                                                        class="form-control">
+                                                        <option value="">- Pilih Pendapatan -</option>
+                                                        <option value="Rp. 1.000.000 - Rp. 2.500.000">Rp. 1.000.000 - Rp.
+                                                            2.500.000</option>
+                                                        <option value="Rp. 2.500.000 - Rp. 5.000.000">Rp. 2.500.000 - Rp.
+                                                            5.000.000</option>
+                                                        <option value="Rp. 5.000.000 - Rp. 10.000.000">Rp. 5.000.000 - Rp.
+                                                            10.000.000</option>
+                                                    </select>
                                                 </div>
 
                                                 <br>
@@ -473,28 +479,17 @@
             </div>
             </section>
 
-            <!-- Penutup Isinya -->
-
-            <!-- Fungsi untuk cetak -->
-            <script type="text/javascript">
-                function cetak(id) {
-                    window.open("../cetak/index.php?id=" + id, "_blank",
-                        "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=100,width=900,height=460");
-                }
-            </script>
-
-
-            <!-- Footer -->
 
         </div>
         <footer class="main-footer">
-            <div class="footer-left">
-                Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval
-                    Azhar</a>
+
+            <div>
+                <div class="copyright">
+                    &copy; <strong><span>Universitas Dinamika Bangsa</span></strong> |
+                    {{ \Carbon\Carbon::now()->year }}
+                </div>
             </div>
-            <div class="footer-right">
-                Developer : <a href="//linkedin.com/in/bejosuseno" target="blank">Code Peka</a>
-            </div>
+
         </footer>
     </div>
 @endSection;

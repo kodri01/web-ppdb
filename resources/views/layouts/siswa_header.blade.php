@@ -79,11 +79,13 @@
             <div class="main-sidebar">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href=""><img src="" alt="LP" width="30px">
+                        <a href=""><img src="{{ url('assets/img/avatar/icone.png') }}" alt="LP"
+                                width="30px">
                             PPDB</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href=""><img src="" alt="LP" width="47px"></a>
+                        <a href=""><img src="{{ url('assets/img/avatar/icone.png') }}" alt="LP"
+                                width="47px"></a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Menu</li>

@@ -15,23 +15,38 @@
                                 <h4>Login Admin</h4>
                             </div>
 
+                            @if (Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif
+
                             <div class="card-body">
-                                <form method="POST" action="{{ route('admin.login') }}" class="needs-validation"
-                                    novalidate="" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('admin.login') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input id="email" type="text" class="form-control" name="email"
-                                            tabindex="1" required autofocus>
-
+                                        <input id="email" type="text"
+                                            class="form-control @error('email') is-invalid @enderror" name="email">
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <div class="d-block">
                                             <label for="password" class="control-label">Password</label>
                                         </div>
-                                        <input id="password" type="password" class="form-control" name="password"
-                                            tabindex="2" required>
+                                        <input id="password" type="password"
+                                            class="form-control @error('password') is-invalid @enderror" name="password">
+                                        @error('password')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group text-right">
