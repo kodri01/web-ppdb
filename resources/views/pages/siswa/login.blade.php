@@ -6,9 +6,10 @@
             <div class="d-flex flex-wrap align-items-stretch">
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="p-4 m-3">
-                        <img src="" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-                        <h4 class="text-dark text-center font-weight-normal">Selamat datang di <br><span
-                                class="font-weight-bold">PPDB SDN 11
+                        <img src="{{ url('assets/img/avatar/icone.png') }}" alt="logo" width="80"
+                            class="shadow-light mb-5 mt-2">
+                        <h4 class="text-dark  font-weight-normal">Selamat datang di <br><span class="font-weight-bold">PPDB
+                                SDN 205/IV
                                 Kota Jambi</span>
                         </h4>
                         <p class="text-muted">Sebelum Anda memulai, Anda harus masuk atau mendaftar jika Anda belum
@@ -66,13 +67,15 @@
                         </center>
                     </div>
                 </div>
-                <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom"
-                    data-background="{{ url('assets/img/log.png') }}">
+                <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-200 background-walk-y position-relative overlay-gradient-bottom"
+                    data-background="{{ url('assets/img/log.jpg') }}">
                     <div class="absolute-bottom-left index-2">
                         <div class="text-light p-5 pb-2">
                             <div class=" pb-3">
-                                <h1 class="mt-2 display-4 font-weight-bold">Selamat Datang Peserta Didik Baru</h1>
-                                {{-- <h5 class="font-weight-normal text-muted-transparent">Bali, Indonesia</h5> --}}
+                                <h1 class="mt-2 display-4 font-weight-bold text-uppercase"
+                                    style="text-shadow:  -2px 0px 0px black">Selamat
+                                    Datang
+                                    Peserta Didik Baru</h1>
                             </div>
                         </div>
                     </div>

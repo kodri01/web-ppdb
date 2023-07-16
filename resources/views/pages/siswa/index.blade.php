@@ -49,7 +49,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $s->no_register }}</td>
                                                 <td>{{ $s->nama_lengkap }}</td>
-                                                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $s->tgl_lahir)->format('d-m-Y') }}
+                                                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $s->tgl_lahir)->format('d F Y') }}
                                                 </td>
                                                 <td>{{ $s->jk }}</td>
                                                 <td>{{ $s->alamat }}</td>

@@ -34,7 +34,7 @@
                                         <div class="input-group mb-2">
                                             <div class="input-group-text">Tanggal Lahir</div>
                                             <input type="text" class="form-control" disabled
-                                                value="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $siswa->tgl_lahir)->format('d M Y') }}"
+                                                value="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $siswa->tgl_lahir)->format('d F Y') }}"
                                                 id="specificSizeInputGroupUsername">
                                         </div>
                                         <div class="input-group mb-2">
@@ -146,7 +146,7 @@
                                         <div class="input-group mb-2">
                                             <div class="input-group-text">Tanggal Lahir</div>
                                             <input type="text" class="form-control" disabled
-                                                value="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $siswa->tgl_lahir_ayah)->format('d M Y') }}"
+                                                value="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $siswa->tgl_lahir_ayah)->format('d F Y') }}"
                                                 id="specificSizeInputGroupUsername">
                                         </div>
                                         <div class="input-group mb-2">
@@ -178,7 +178,7 @@
                                         <div class="input-group mb-2">
                                             <div class="input-group-text">Tanggal Lahir</div>
                                             <input type="text" class="form-control" disabled
-                                                value="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $siswa->tgl_lahir_ibu)->format('d M Y') }}"
+                                                value="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $siswa->tgl_lahir_ibu)->format('d F Y') }}"
                                                 id="specificSizeInputGroupUsername">
                                         </div>
 

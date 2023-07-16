@@ -17,7 +17,7 @@ class RegisterController extends Controller
     public function index()
     {
         $title = 'Register Siswa';
-        $judul = 'Register Siswa';
+        $judul = 'REGISTRASI SISWA';
         return view('pages/siswa/register', compact('title', 'judul'));
     }
 

@@ -53,7 +53,7 @@
 
                     </ul>
                     <div>
-                        <h4 class="text-white mt-2"><strong>Admin PPDB SD Negeri 11 Kota Jambi</strong></h4>
+                        <h4 class="text-white mt-2"><strong>ADMIN PPDB SD Negeri 205/IV Kota Jambi</strong></h4>
                     </div>
                 </form>
                 <ul class="navbar-nav navbar-right">
@@ -78,7 +78,7 @@
                     <div class="sidebar-brand">
                         <a href=""><img src="{{ url('assets/img/avatar/icone.png') }}" alt="LP"
                                 width="30px">
-                            PPDB</a>
+                            SDN 205/IV Kota Jambi</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href=""><img src="{{ url('assets/img/avatar/icone.png') }}" alt="LP"

@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>PPDB SDN 11 KOTA JAMBI</title>
+    <title>PPDB SDN 205/IV KOTA JAMBI</title>
     <meta content="" name="description">
 
     <!-- Gambar Title -->
-    <link rel="icon" type="image/png" href="assets/img/logo-pbg.png">
+    <link rel="icon" type="image/png" href="{{ url('assets/img/logo-pbg.png') }}">
 
     <meta content="" name="keywords">
 
@@ -77,9 +77,9 @@
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center">
                     <h1 data-aos="fade-up">PPDB</h1>
-                    <h1 data-aos="fade-up">SD NEGERI 11 KOTA JAMBI</h1>
+                    <h1 data-aos="fade-up">SD NEGERI 205/IV KOTA JAMBI</h1>
                     <h2 data-aos="fade-up" data-aos-delay="400">Mari bergabung meraih masa depan gemilang bersama SD
-                        Negeri 11 Kota Jambi</h2>
+                        Negeri 205/IV Kota Jambi</h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="text-center text-lg-start">
                             <a href="{{ route('siswa.login') }}"
@@ -90,8 +90,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="assets/img/elemen-lp.png" class="img-fluid" alt="">
+                <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="300">
+                    <img src="{{ url('assets/img/elemen-lp.jpg') }}" class="img-fluid" alt="">
                 </div>
             </div>
         </div>
@@ -115,7 +115,8 @@
                                 <li> Calon peserta didik mengisi formulir pendaftaran </li>
                                 <li> Pastikan data yang dimasukkan sudah benar </li>
                                 <li> Login menggunakan akun yang sudah dibuat </li>
-                                <li> Menunggu pengumuman penerimaan siswa baru SD Negeri 11 Kota Jambi melalui website
+                                <li> Menunggu pengumuman penerimaan siswa baru SD Negeri 205/IV Kota Jambi melalui
+                                    website
                                     PPDB
                                 </li>
                                 <li> Melakukan daftar ulang dan melengkapi persyaratan bagi siswa yang lolos </li>
@@ -158,21 +159,22 @@
                             <div class="info-box">
                                 <i class="bi bi-geo-alt"></i>
                                 <h3>Alamat</h3>
-                                <p> Jalan Merpati Putih, Kota Jambi, Kecamatan Telanaipura, Kabupaten Kota Jambi, Jambi
-                                    35542</p>
+                                <p> Jalan Kapten Patimura, Kenali Besar, Kecamatan Alam Barajo, Kabupaten Kota Jambi,
+                                    Jambi
+                                    36129</p>
                             </div>
                             <div class="col-md-6">
                                 <div class="info-box">
                                     <i class="bi bi-envelope"></i>
                                     <h3>Email</h3>
-                                    <p>sdn11kotajambi@gmail.com</p>
+                                    <p>-</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="info-box">
                                     <i class="bi bi-telephone"></i>
                                     <h3>Telepon</h3>
-                                    <p>(0281) 6596714</p>
+                                    <p>-</p>
                                 </div>
                             </div>
                         </div>
@@ -234,10 +236,11 @@
                             <img src="assets/img/logo-pbg.png" alt="">
                             <span>PPDB</span>
                         </a>
-                        <p>PPDB merupakan kegiatan Penerimaan Peserta Didik Baru di SD Negeri 11 Kota Jambi. Kegiatan
+                        <p>PPDB merupakan kegiatan Penerimaan Peserta Didik Baru di SD Negeri 205/IV Kota Jambi.
+                            Kegiatan
                             PPDB
                             dapat dilakukan melalui website PPDB yang dapat memudahkan wali murid dan calon peserta
-                            didik dalam melakukan pendaftaran sekolah di SD Negeri 11 Kota Jambi.</p>
+                            didik dalam melakukan pendaftaran sekolah di SD Negeri 205/IV Kota Jambi.</p>
                         <div class="social-links mt-3">
                             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -258,10 +261,11 @@
                     <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                         <h4>Contact Us</h4>
                         <p>
-                            Jalan Merpati Putih, Kota Jambi, Kecamatan Telanaipura, <br>Kabupaten Kota Jambi, Jambi <br>
-                            35542<br>
-                            <strong>Telepon:</strong> (0281) 6596714<br>
-                            <strong>Email:</strong> sdn11kotajambi@gmail.com<br>
+                            Jalan Kapten Patimura, Kenali Besar, Kecamatan Alam Barajo,<br> Kabupaten Kota Jambi,<br>
+                            Jambi
+                            36129<br>
+                            <strong>Telepon:</strong> -<br>
+                            <strong>Email:</strong> -<br>
                         </p>
 
                     </div>

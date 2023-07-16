@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="keywords">
+
     <title>{{ $title }}</title>
 
+    <link rel="icon" type="image/png" href="{{ url('assets/img/logo-pbg.png') }}">
+
     <!-- General CSS Files -->
-    <link rel="icon" href="assets/img/avatar/icone.png">
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ url('assets/bootstrap-4/css/bootstrap.min.css') }}">
