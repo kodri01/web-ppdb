@@ -30,17 +30,21 @@
                             @csrf
                             <div class="form-group">
                                 <label for="nisn">Nomor Register</label>
-                                <input id="nisn" type="number" class="form-control" name="no_register" tabindex="1"
-                                    autofocus>
-
+                                <input type="number" class="form-control @error('no_register') is-invalid @enderror"
+                                    name="no_register" placeholder="Masukan Nomor Register">
+                                @error('no_register')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <div class="d-block">
                                     <label for="tanggal_lahir" class="control-label">Tanggal Lahir</label>
                                 </div>
-                                <input id="tanggal_lahir" type="date" class="form-control" name="tgl_lahir"
-                                    tabindex="2">
-
+                                <input id="tanggal_lahir" type="date"
+                                    class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir">
+                                @error('tgl_lahir')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group text-right">

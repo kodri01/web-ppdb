@@ -23,7 +23,6 @@
                             <!-- Tambah Data -->
                             <form action="{{ route('store.siswa') }}" method="POST">
                                 @csrf
-                                @csrf
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>Nama Sekolah <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -62,12 +61,16 @@
                                     <div class="form-group">
                                         <label>Jenis Kelamin <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <select name="jk" id="jk" class="form-control"
+                                        <select name="jk" id="jk"
+                                            class="form-control  @error('jk') is-invalid @enderror"
                                             value="{{ old('jk') }}">
                                             <option value="">- Pilih Jenis Kelamin -</option>
                                             <option value="Laki-Laki">Laki-Laki</option>
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
+                                        @error('jk')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Tempat Lahir <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -83,18 +86,26 @@
                                     <div class="form-group">
                                         <label>Tanggal Lahir <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <input type="date" class="form-control" name="tgl_lahir"
-                                            value="{{ old('tgl_lahir') }}">
+                                        <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror"
+                                            name="tgl_lahir" value="{{ old('tgl_lahir') }}">
+                                        @error('tgl_lahir')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Alamat Sekarang <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <textarea name="alamat" class="form-control" value="{{ old('alamat') }}" id="alamat" cols="30" rows="10"></textarea>
+                                        <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" value="{{ old('alamat') }}"
+                                            id="alamat" cols="30" rows="10"></textarea>
+                                        @error('alamat')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Agama <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <select name="agama" id="agama" class="form-control"
+                                        <select name="agama" id="agama"
+                                            class="form-control @error('alamat') is-invalid @enderror"
                                             value="{{ old('agama') }}">
                                             <option value="">- Pilih Agama -</option>
                                             <option value="Islam">Islam</option>
@@ -102,16 +113,23 @@
                                             <option value="Hindu">Hindu</option>
                                             <option value="Budha">Budha</option>
                                         </select>
+                                        @error('agama')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Kebutuhan Khusus <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <select name="keb_khusus" id="keb_khusus" class="form-control"
+                                        <select name="keb_khusus" id="keb_khusus"
+                                            class="form-control @error('keb_khusus') is-invalid @enderror"
                                             value="{{ old('keb_khusus') }}">
                                             <option value="">- Pilih -</option>
                                             <option value="Iya">IYA</option>
                                             <option value="Tidak">TIDAK</option>
                                         </select>
+                                        @error('keb_khusus')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>RT <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -144,8 +162,9 @@
                                         <label>Kelurahan/Desa <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
                                         <input type="text"
-                                            class="form-control @error('kelurahan') is-invalid @enderror" name="kelurahan"
-                                            placeholder="Nama Kelurahan/Desa" value="{{ old('kelurahan') }}">
+                                            class="form-control @error('kelurahan') is-invalid @enderror"
+                                            name="kelurahan" placeholder="Nama Kelurahan/Desa"
+                                            value="{{ old('kelurahan') }}">
                                         @error('kelurahan')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -154,8 +173,9 @@
                                         <label>Kecamatan <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
                                         <input type="text"
-                                            class="form-control @error('kecamatan') is-invalid @enderror" name="kecamatan"
-                                            placeholder="Nama Kecamatan" value="{{ old('kecamatan') }}">
+                                            class="form-control @error('kecamatan') is-invalid @enderror"
+                                            name="kecamatan" placeholder="Nama Kecamatan"
+                                            value="{{ old('kecamatan') }}">
                                         @error('kecamatan')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -164,8 +184,9 @@
                                         <label>Kabupaten <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
                                         <input type="text"
-                                            class="form-control @error('kabupaten') is-invalid @enderror" name="kabupaten"
-                                            placeholder="Nama Kabupaten" value="{{ old('kabupaten') }}">
+                                            class="form-control @error('kabupaten') is-invalid @enderror"
+                                            name="kabupaten" placeholder="Nama Kabupaten"
+                                            value="{{ old('kabupaten') }}">
                                         @error('kabupaten')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -173,23 +194,31 @@
                                     <div class="form-group">
                                         <label>Tempat Tinggal <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <select name="tempat_tinggal" id="tempat_tinggal" class="form-control"
+                                        <select name="tempat_tinggal" id="tempat_tinggal"
+                                            class="form-control @error('tempat_tinggal') is-invalid @enderror"
                                             value="{{ old('tempat_tinggal') }}">
-                                            <option value="">- Pilih -</option>
+                                            <option value="">- Pilih Tempat Tinggal -</option>
                                             <option value="Rumah">Rumah</option>
                                             <option value="Kontrakan">Kontrakan</option>
                                         </select>
+                                        @error('tempat_tinggal')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Moda Transportasi <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <select name="moda_transport" id="moda_transport" class="form-control"
+                                        <select name="moda_transport" id="moda_transport"
+                                            class="form-control @error('moda_transport') is-invalid @enderror"
                                             value="{{ old('moda_transport') }}">
-                                            <option value="">- Pilih -</option>
+                                            <option value="">- Pilih Moda Transport-</option>
                                             <option value="Jalan Kaki">Jalan Kaki</option>
                                             <option value="Sepeda Motor">Sepeda Motor</option>
                                             <option value="Mobil">Mobil</option>
                                         </select>
+                                        @error('moda_transport')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Nomor Handphone <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -203,12 +232,16 @@
                                     <div class="form-group">
                                         <label>Kewarganegaraan <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <select name="kewarganegaraan" id="kewarganegaraan" class="form-control"
+                                        <select name="kewarganegaraan" id="kewarganegaraan"
+                                            class="form-control @error('kewarganegaraan') is-invalid @enderror"
                                             value="{{ old('kewarganegaraan') }}">
-                                            <option value="">- Pilih -</option>
+                                            <option value="">- Pilih Kewarganegaraan-</option>
                                             <option value="Indonesia">Indonesia</option>
                                             <option value="Asing">Asing</option>
                                         </select>
+                                        @error('kewarganegaraan')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Saudara Kandung <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -225,7 +258,7 @@
                                         <label>Tinggi Badan (Cm) <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
                                         <input type="text" class="form-control @error('tbadan') is-invalid @enderror"
-                                            name="tbadan" placeholder="Tinggi Badan" value=" {{ old('tbadan') }}">
+                                            name="tbadan" placeholder="Tinggi Badan" value="{{ old('tbadan') }}">
                                         @error('tbadan')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -277,8 +310,12 @@
                                     <div class="form-group">
                                         <label>Tanggal Lahir <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <input type="date" class="form-control" name="tgl_lahir_ayah"
-                                            value="{{ old('tgl_lahir_ayah') }}">
+                                        <input type="date"
+                                            class="form-control @error('tgl_lahir_ayah') is-invalid @enderror"
+                                            name="tgl_lahir_ayah" value="{{ old('tgl_lahir_ayah') }}">
+                                        @error('tgl_lahir_ayah')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Pendidikan Ayah <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -305,7 +342,8 @@
                                     <div class="form-group">
                                         <label>Pendapatan Bulanan Ayah <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <select name="pendapatan_ayah" id="kewarganegaraan" class="form-control">
+                                        <select name="pendapatan_ayah" id="kewarganegaraan"
+                                            class="form-control @error('pendapatan_ayah') is-invalid @enderror">
                                             <option value="">- Pilih Pendapatan -</option>
                                             <option value="Rp. 1.000.000 - Rp. 2.500.000">Rp. 1.000.000 - Rp.
                                                 2.500.000</option>
@@ -314,6 +352,9 @@
                                             <option value="Rp. 5.000.000 - Rp. 10.000.000">Rp. 5.000.000 - Rp.
                                                 10.000.000</option>
                                         </select>
+                                        @error('pendapatan_ayah')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Nama Ibu <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -328,8 +369,12 @@
                                     <div class="form-group">
                                         <label>Tanggal Lahir <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <input type="date" class="form-control" name="tgl_lahir_ibu"
-                                            value="{{ old('tgl_lahir_ibu') }}">
+                                        <input type="date"
+                                            class="form-control @error('tgl_lahir_ibu') is-invalid @enderror"
+                                            name="tgl_lahir_ibu" value="{{ old('tgl_lahir_ibu') }}">
+                                        @error('tgl_lahir_ibu')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Pendidikan Ibu <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -355,7 +400,8 @@
                                     <div class="form-group">
                                         <label>Pendapatan Bulanan Ibu <i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <select name="pendapatan_ibu" id="kewarganegaraan" class="form-control">
+                                        <select name="pendapatan_ibu" id="kewarganegaraan"
+                                            class="form-control @error('pekerjaan_ibu') is-invalid @enderror">
                                             <option value="">- Pilih Pendapatan -</option>
                                             <option value="Rp. 1.000.000 - Rp. 2.500.000">Rp. 1.000.000 - Rp.
                                                 2.500.000</option>
@@ -364,15 +410,18 @@
                                             <option value="Rp. 5.000.000 - Rp. 10.000.000">Rp. 5.000.000 - Rp.
                                                 10.000.000</option>
                                         </select>
+                                        @error('pendapatan_ibu')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <br>
                                     <div class="modal-footer bg-whitesmoke br">
-                                        <a href="{{ route('data.siswa') }}" type="button"
-                                            class="btn btn-secondary">Batal</a>
+                                        <a href="{{ route('/') }}" type="button" class="btn btn-secondary">Batal</a>
                                         <button class="btn btn-primary" type="submit">Simpan</button>
                                     </div>
                                 </div>
+
                             </form>
                             <!-- penutup Tambah Data -->
 
