@@ -76,6 +76,9 @@ class RegisterController extends Controller
             'pend_ibu' => 'required',
             'pekerjaan_ibu' => 'required',
             'pendapatan_ibu' => 'required',
+            'profile'      => 'required',
+            'kk'      => 'required',
+            'akte'      => 'required',
         ];
 
         $messages = [
@@ -113,6 +116,10 @@ class RegisterController extends Controller
             'moda_transport.required' => 'Moda Transportasi Wajid Diisi',
             'tgl_lahir_ayah.required' => 'Tanggal Lahir Ayah Wajid Diisi',
             'tgl_lahir_ibu.required' => 'Tanggal Lahir Ibu Wajid Diisi',
+            'profile.required'  => 'Pas Foto wajib diupload',
+            'kk.required'  => 'File KK wajib diupload',
+            'akte.required'  => 'File Akte wajib diupload',
+
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -135,6 +142,18 @@ class RegisterController extends Controller
 
         // Membentuk nomor register dengan format tahun+bulan+urutan
         $noRegister = $year . $month . $countFormatted;
+
+        $namefile = str_replace(' ', '_', $request->profile->getClientOriginalName());
+        $filename  = $namefile . '_' . time() . '.' . $request->profile->extension();
+        $request->profile->move(public_path('uploads'), $filename);
+
+        $namefile1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
+        $filename1  = $namefile1 . '_' . time() . '.' . $request->kk->extension();
+        $request->kk->move(public_path('uploads'), $filename1);
+
+        $namefile2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
+        $filename2  = $namefile2 . '_' . time() . '.' . $request->akte->extension();
+        $request->akte->move(public_path('uploads'), $filename2);
 
         $siswa = Siswa::create([
             'no_register' => $noRegister,
@@ -173,6 +192,9 @@ class RegisterController extends Controller
             'waktu_tempuh' => $request->waktu_tempuh,
             'waktu_tempuh' => $request->waktu_tempuh,
             'jml_saudara' => $request->saudara_kandung,
+            'profile' => $filename,
+            'kk' => $filename1,
+            'akte' => $filename2,
             'status' => 0,
         ]);
         session(['siswa' => $siswa]);

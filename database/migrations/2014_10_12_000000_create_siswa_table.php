@@ -50,6 +50,9 @@ class CreateSiswaTable extends Migration
             $table->string('zonasi')->nullable();
             $table->string('waktu_tempuh')->nullable();
             $table->string('jml_saudara')->nullable();
+            $table->text('profile')->nullable();
+            $table->text('kk')->nullable();
+            $table->text('akte')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -133,6 +133,39 @@
                                                 id="specificSizeInputGroupUsername">
                                         </div>
 
+
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-4 col-lg- 4">
+                                                <div class="input-group ">
+                                                    <div class="input-group-text">Pas Photo</div>
+                                                    <div class="show-image d-inline-block" id="show-image"
+                                                        style="width: 150px; height: auto;">
+                                                        <img src='{{ url('uploads/' . $siswa->profile) }}'
+                                                            class="img-fluid img-thumbnail" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg- 4">
+                                                <div class="input-group ">
+                                                    <div class="input-group-text">File KK</div>
+                                                    <div class="show-image d-inline-block" id="show-image"
+                                                        style="width: 150px; height: auto;">
+                                                        <img src='{{ url('uploads/' . $siswa->kk) }}'
+                                                            class="img-fluid img-thumbnail" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg- 4">
+                                                <div class="input-group ">
+                                                    <div class="input-group-text">File Akte</div>
+                                                    <div class="show-image d-inline-block" id="show-image"
+                                                        style="width: 150px; height: auto;">
+                                                        <img src='{{ url('uploads/' . $siswa->akte) }}'
+                                                            class="img-fluid img-thumbnail" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-4 col-lg-6">

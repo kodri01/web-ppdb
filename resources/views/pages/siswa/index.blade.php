@@ -19,13 +19,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
+                        {{-- <div class="card-header">
                             <!-- <h4>Basic DataTables</h4> -->
                             <a href="{{ route('add.siswa') }}" type="button"
                                 class="btn btn-primary daterange-btn icon-left btn-icon">
                                 <i class="fas fa-plus"></i> Tambah Data Siswa
                             </a>
-                        </div>
+                        </div> --}}
                         <div class="card-body">
 
                             <!-- tabelnya -->

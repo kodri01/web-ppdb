@@ -47,6 +47,9 @@ class Siswa extends Model
         'zonasi',
         'waktu_tempuh',
         'jml_saudara',
+        'profile',
+        'kk',
+        'akte',
         'status'
     ];
 }

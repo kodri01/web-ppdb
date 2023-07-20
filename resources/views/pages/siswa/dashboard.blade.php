@@ -26,9 +26,13 @@
                     <h3 class="card-title">Data Kamu Sudah Terkirim!</h3>
                     <h5 class="card-text">Mohon menunggu <strong>INFORMASI</strong> dari Panitia <strong>Penerimaan
                             Peserta Didik Baru (PPDB)</strong> </h5>
-                    <h5>Sekolah Dasar Negeri 205/IV Kota Jambi. Untuk melihat hasil seleksi, </h5>
-                    <h5>Kamu dapat Login Kembali dengan <u><strong>Nomor Register :
-                                {{ $siswa->no_register }}</strong></u> dan <strong>Tanggal Lahir</strong></h5>
+                    <h5>Sekolah Dasar Negeri 205/IV Kota Jambi. Untuk melihat hasil seleksi, Kamu dapat Login Kembali dengan
+                    </h5>
+                    <h3><strong class="bg-success text-uppercase">Nomor Register :
+                            {{ $siswa->no_register }} dan Tanggal
+                            Lahir
+                        </strong> </h3>
+
                 </div>
             </div>
         @endif

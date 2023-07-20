@@ -60,12 +60,9 @@
                     <!-- klo mau nambah menu notifikasi langsung ke websitenya aja (https://getstisla.com/) -->
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="{{ url('assets/img/avatar/avatar-1.png') }}"
-                                class="rounded-circle mr-1">
-
-
-                            <div class="d-sm-none d-lg-inline-block">{{ $siswa->nama_lengkap }} </div>
-
+                            <img alt="image" src="{{ asset('uploads/' . $siswa->profile) }}"
+                                style="width: 50px;height:50px;" class="rounded-circle mr-1">
+                            <h5 class="d-sm-none d-lg-inline-block text-capitalize">{{ $siswa->nama_lengkap }} </h5>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <!-- <div class="dropdown-title">Logged in 5 min ago</div> -->
