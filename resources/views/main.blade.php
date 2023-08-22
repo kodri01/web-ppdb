@@ -55,7 +55,7 @@
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#panduan">Panduan Pendaftaran</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li class="dropdown"><a href="#"><span>Get Started</span> <i
+                    <li class="dropdown"><a href="#"><span>Mulai Daftar</span> <i
                                 class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="{{ route('siswa.login') }}">Login</a></li>
@@ -84,7 +84,7 @@
                         <div class="text-center text-lg-start">
                             <a href="{{ route('siswa.login') }}"
                                 class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                                <span>Get Started</span>
+                                <span>Mulai Daftar</span>
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>

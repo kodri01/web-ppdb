@@ -14,6 +14,7 @@ class Siswa extends Model
     protected $fillable = [
         'no_register',
         'nama_sekolah',
+        'status_siswa',
         'alamat_sekolah',
         'nama_lengkap',
         'jk',
@@ -33,11 +34,13 @@ class Siswa extends Model
         'moda_transport',
         'kewarganegaraan',
         'nama_ayah',
+        'nik_ayah',
         'tgl_lahir_ayah',
         'pend_ayah',
         'pekerja_ayah',
         'gaji_ayah',
         'nama_ibu',
+        'nik_ibu',
         'tgl_lahir_ibu',
         'pend_ibu',
         'pekerja_ibu',
@@ -50,6 +53,7 @@ class Siswa extends Model
         'profile',
         'kk',
         'akte',
+        'ijazah_tk',
         'status'
     ];
 }

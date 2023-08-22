@@ -42,6 +42,7 @@ class RegisterController extends Controller
         $rules = [
             'nama_sekolah' => 'required',
             'alamat_sekolah' => 'required',
+            'status_siswa' => 'required',
             'name' => 'required',
             'tempat_lahir' => 'required',
             'jk' => 'required',
@@ -69,21 +70,25 @@ class RegisterController extends Controller
             'zonasi' => 'required',
             'waktu_tempuh' => 'required',
             'nama_ayah' => 'required',
+            'nik_ayah' => 'required',
             'pend_ayah' => 'required',
             'pekerjaan_ayah' => 'required',
             'pendapatan_ayah' => 'required',
             'nama_ibu' => 'required',
+            'nik_ibu' => 'required',
             'pend_ibu' => 'required',
             'pekerjaan_ibu' => 'required',
             'pendapatan_ibu' => 'required',
             'profile'      => 'required',
             'kk'      => 'required',
             'akte'      => 'required',
+            'ijazah_tk'      => 'required',
         ];
 
         $messages = [
             'nama_sekolah.required'  => 'Nama Sekolah Wajib Diisi',
             'alamat_sekolah.required'  => 'Alamat Sekolah Wajib Diisi',
+            'status_siswa.required'  => 'Status Siswa Wajib dipilih',
             'name.required' => 'Nama Lengkap Wajib Diisi',
             'tempat_lahir.required' => 'Tempat Lahir Wajib Diisi',
             'rt.required' => 'RT Wajib Diisi',
@@ -99,10 +104,12 @@ class RegisterController extends Controller
             'zonasi.required' => 'Jarak Tempuh Wajib Diisi',
             'waktu_tempuh.required' => 'Waktu Tempuh Wajib Diisi',
             'nama_ayah.required' => 'Nama Ayah Wajib Diisi',
+            'nik_ayah.required' => 'Nomor NIK Ayah Wajib Diisi',
             'pend_ayah.required' => 'Pendidikan Terakhir Ayah Wajib Diisi',
             'pekerjaan_ayah.required' => 'Pekerjaan Ayah Wajib Diisi',
             'pendapatan_ayah.required' => 'Pendapatan Ayah Wajib Diisi',
             'nama_ibu.required' => 'Nama Ibu Wajib Diisi',
+            'nik_ibu.required' => 'Nomor NIK Ibu Wajib Diisi',
             'pend_ibu.required' => 'Pendidikan Terakhir Ibu Wajib Diisi',
             'pekerjaan_ibu.required' => 'Pekerjaan Ibu Wajib Diisi',
             'pendapatan_ibu.required' => 'Pendapatan Ibu Wajib Diisi',
@@ -119,6 +126,7 @@ class RegisterController extends Controller
             'profile.required'  => 'Pas Foto wajib diupload',
             'kk.required'  => 'File KK wajib diupload',
             'akte.required'  => 'File Akte wajib diupload',
+            'ijazah_tk.required'  => 'File Ijazah TK wajib diupload',
 
         ];
 
@@ -155,10 +163,15 @@ class RegisterController extends Controller
         $filename2  = $namefile2 . '_' . time() . '.' . $request->akte->extension();
         $request->akte->move(public_path('uploads'), $filename2);
 
+        $namefile3 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
+        $filename3  = $namefile3 . '_' . time() . '.' . $request->ijazah_tk->extension();
+        $request->ijazah_tk->move(public_path('uploads'), $filename3);
+
         $siswa = Siswa::create([
             'no_register' => $noRegister,
             'nama_sekolah' => $request->nama_sekolah,
             'alamat_sekolah' => $request->alamat_sekolah,
+            'status_siswa' => $request->status_siswa,
             'nama_lengkap' => $request->name,
             'jk' => $request->jk,
             'tempat_lahir' => $request->tempat_lahir,
@@ -177,11 +190,13 @@ class RegisterController extends Controller
             'moda_transport' => $request->moda_transport,
             'kewarganegaraan' => $request->kewarganegaraan,
             'nama_ayah' => $request->nama_ayah,
+            'nik_ayah' => $request->nik_ayah,
             'tgl_lahir_ayah' => $request->tgl_lahir_ayah,
             'pend_ayah' => $request->pend_ayah,
             'pekerja_ayah' => $request->pekerjaan_ayah,
             'gaji_ayah' => $request->pendapatan_ayah,
             'nama_ibu' => $request->nama_ibu,
+            'nik_ibu' => $request->nik_ibu,
             'tgl_lahir_ibu' => $request->tgl_lahir_ibu,
             'pend_ibu' => $request->pend_ibu,
             'pekerja_ibu' => $request->pekerjaan_ibu,
@@ -195,6 +210,7 @@ class RegisterController extends Controller
             'profile' => $filename,
             'kk' => $filename1,
             'akte' => $filename2,
+            'ijazah_tk' => $filename3,
             'status' => 0,
         ]);
         session(['siswa' => $siswa]);

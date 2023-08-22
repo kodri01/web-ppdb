@@ -73,7 +73,6 @@
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
                                                         </div>
-
                                                     </div>
                                                     <div class="col-sm-12 col-md-6 col-lg-6">
                                                         <div class="form-group">
@@ -89,6 +88,23 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>Status <i class="fa fa-solid fa-star-of-life fa-xs"
+                                                                    style="color: red"></i></label>
+                                                            <select name="status_siswa" id="status_siswa"
+                                                                class="form-control  @error('status_siswa') is-invalid @enderror"
+                                                                value="{{ old('status_siswa') }}">
+                                                                <option value="">- Pilih Status Siswa-</option>
+                                                                <option value="Siswa Baru">Siswa Baru</option>
+                                                                <option value="Siswa Pindahan">Siswa Pindahan</option>
+                                                            </select>
+                                                            @error('status_siswa')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
                                                 </div>
 
                                                 <div class="section-title  mb-4">Informasi Calon Siswa</div>
@@ -427,13 +443,13 @@
                                                     </div>
                                                     <div class="col-sm-12 col-md-6 col-lg-6">
                                                         <div class="form-group">
-                                                            <label for="file">Pas Photo <i
+                                                            <label for="file">Ijazah TK <i
                                                                     class="fa fa-solid fa-star-of-life fa-xs"
                                                                     style="color: red"></i></label>
                                                             <input type="file"
-                                                                class="form-control @error('profile') is-invalid @enderror"
-                                                                name="profile">
-                                                            @error('profile')
+                                                                class="form-control @error('ijazah_tk') is-invalid @enderror"
+                                                                name="ijazah_tk">
+                                                            @error('ijazah_tk')
                                                                 <div class="text-danger">{{ $message }}</div>
                                                             @enderror
                                                         </div>
@@ -453,6 +469,19 @@
                                                     </div>
                                                     <div class="col-sm-12 col-md-6 col-lg-6">
                                                         <div class="form-group">
+                                                            <label for="file">Pas Photo <i
+                                                                    class="fa fa-solid fa-star-of-life fa-xs"
+                                                                    style="color: red"></i></label>
+                                                            <input type="file"
+                                                                class="form-control @error('profile') is-invalid @enderror"
+                                                                name="profile">
+                                                            @error('profile')
+                                                                <div class="text-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="form-group">
                                                             <label for="file">File Akte <i
                                                                     class="fa fa-solid fa-star-of-life fa-xs"
                                                                     style="color: red"></i></label>
@@ -464,6 +493,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
 
                                                 </div>
 
@@ -479,6 +509,19 @@
                                                                 name="nama_ayah" placeholder="Nama Lengkap Ayah"
                                                                 value="{{ old('nama_ayah') }}">
                                                             @error('nama_ayah')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>NIK Ayah <i class="fa fa-solid fa-star-of-life fa-xs"
+                                                                    style="color: red"></i></label>
+                                                            <input type="text"
+                                                                class="form-control @error('nik_ayah') is-invalid @enderror"
+                                                                name="nik_ayah" placeholder="Nomor NIK Ayah"
+                                                                value="{{ old('nik_ayah') }}">
+                                                            @error('nik_ayah')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
                                                         </div>
@@ -556,6 +599,19 @@
                                                                 name="nama_ibu" placeholder="Nama Lengkap Ibu"
                                                                 value="{{ old('nama_ibu') }}">
                                                             @error('nama_ibu')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>NIK Ibu <i class="fa fa-solid fa-star-of-life fa-xs"
+                                                                    style="color: red"></i></label>
+                                                            <input type="text"
+                                                                class="form-control @error('nik_ibu') is-invalid @enderror"
+                                                                name="nik_ibu" placeholder="Nomor NIK Ibu"
+                                                                value="{{ old('nik_ibu') }}">
+                                                            @error('nik_ibu')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
                                                         </div>

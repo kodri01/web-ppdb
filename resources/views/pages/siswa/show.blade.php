@@ -20,6 +20,11 @@
                             <div class="row">
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <div class="section-title mt-0 ml-4">Informasi Data Siswa</div>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-text">Status Siswa</div>
+                                        <input type="text" class="form-control text-uppercase text-success" disabled
+                                            value="{{ $siswa->status_siswa }}" id="specificSizeInputGroupUsername">
+                                    </div>
                                     <div class="card ">
                                         <div class="input-group mb-2">
                                             <div class="input-group-text">Nama Lengkap</div>
@@ -135,9 +140,19 @@
 
 
                                         <div class="row">
-                                            <div class="col-sm-6 col-md-4 col-lg- 4">
+                                            <div class="col-sm-6 col-md-4 col-lg-4">
                                                 <div class="input-group ">
-                                                    <div class="input-group-text">Pas Photo</div>
+                                                    <div class="input-group-text my-2">Ijazah TK</div>
+                                                    <div class="show-image d-inline-block" id="show-image"
+                                                        style="width: 150px; height: auto;">
+                                                        <img src='{{ url('uploads/' . $siswa->ijazah_tk) }}'
+                                                            class="img-fluid img-thumbnail" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg-4">
+                                                <div class="input-group ">
+                                                    <div class="input-group-text my-2">Pas Photo</div>
                                                     <div class="show-image d-inline-block" id="show-image"
                                                         style="width: 150px; height: auto;">
                                                         <img src='{{ url('uploads/' . $siswa->profile) }}'
@@ -145,9 +160,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 col-md-4 col-lg- 4">
+                                            <div class="col-sm-6 col-md-4 col-lg-4">
                                                 <div class="input-group ">
-                                                    <div class="input-group-text">File KK</div>
+                                                    <div class="input-group-text my-2">File KK</div>
                                                     <div class="show-image d-inline-block" id="show-image"
                                                         style="width: 150px; height: auto;">
                                                         <img src='{{ url('uploads/' . $siswa->kk) }}'
@@ -155,9 +170,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 col-md-4 col-lg- 4">
+                                            <div class="col-sm-6 col-md-4 col-lg-4">
                                                 <div class="input-group ">
-                                                    <div class="input-group-text">File Akte</div>
+                                                    <div class="input-group-text my-2">File Akte</div>
                                                     <div class="show-image d-inline-block" id="show-image"
                                                         style="width: 150px; height: auto;">
                                                         <img src='{{ url('uploads/' . $siswa->akte) }}'
@@ -175,6 +190,11 @@
                                             <div class="input-group-text">Nama Ayah</div>
                                             <input type="text" class="form-control" disabled
                                                 value="{{ $siswa->nama_ayah }}" id="specificSizeInputGroupUsername">
+                                        </div>
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-text">NIK Ayah</div>
+                                            <input type="text" class="form-control" disabled
+                                                value="{{ $siswa->nik_ayah }}" id="specificSizeInputGroupUsername">
                                         </div>
                                         <div class="input-group mb-2">
                                             <div class="input-group-text">Tanggal Lahir</div>
@@ -206,6 +226,11 @@
                                             <div class="input-group-text">Nama Ibu</div>
                                             <input type="text" class="form-control" disabled
                                                 value="{{ $siswa->nama_ibu }}" id="specificSizeInputGroupUsername">
+                                        </div>
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-text">NIK Ibu</div>
+                                            <input type="text" class="form-control" disabled
+                                                value="{{ $siswa->nik_ibu }}" id="specificSizeInputGroupUsername">
                                         </div>
 
                                         <div class="input-group mb-2">
