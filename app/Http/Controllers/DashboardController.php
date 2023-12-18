@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pembayaran;
 use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -25,8 +27,10 @@ class DashboardController extends Controller
         $title = 'Dashboard Admin';
         $siswaDaftar = Siswa::count();
         $siswaLolos = Siswa::where('status', 1)->count();
-        $siswaGagal = Siswa::where('status', 0)->count();
-        return view('pages.admin.dashboard', compact('judul', 'title', 'siswaLolos', 'siswaGagal', 'siswaDaftar'));
+        $siswaGagal = Siswa::whereNotNull('alasan')->count();
+        $siswaBaru = Siswa::where('status_siswa', 'Siswa Baru')->count();
+        $siswaPindahan = Siswa::where('status_siswa', 'Siswa Pindahan')->count();
+        return view('pages.admin.dashboard', compact('judul', 'title', 'siswaLolos', 'siswaGagal', 'siswaDaftar', 'siswaBaru', 'siswaPindahan'));
     }
 
     public function dashboard_siswa()
@@ -34,7 +38,16 @@ class DashboardController extends Controller
         $judul = 'Selamat Datang';
         $title = 'Dashboard Siswa';
         $siswa = session('siswa');
-        return view('pages.siswa.dashboard', compact('judul', 'title', 'siswa'));
+        $bayar = Pembayaran::where('id_siswa', $siswa->id)->get();
+
+        return view('pages.siswa.dashboard', compact('judul', 'title', 'siswa', 'bayar'));
+    }
+
+    public function print_noregist()
+    {
+        $title = 'Registrasi Ulang';
+        $siswa = session('siswa');
+        return view('pages.siswa.print_noregist', compact('title', 'siswa'));
     }
 
     /**

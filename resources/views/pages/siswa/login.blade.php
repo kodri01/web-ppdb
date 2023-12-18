@@ -1,19 +1,47 @@
 @extends('layouts.main')
 
 @section('content')
+    {{-- <style>
+        .d-flex[data-background] {
+            /* Set background image */
+            background-image: url('assets/img/log.jpg');
+            /* Tambahkan properti CSS untuk membuat transparansi */
+            opacity: 0.5;
+            /* Nilai opacity bisa disesuaikan (0.0 hingga 1.0) */
+            /* Properti lain sesuai kebutuhan */
+        }
+    </style> --}}
     <div id="app">
         <section class="section">
             <div class="d-flex flex-wrap align-items-stretch">
-                <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
+                <div class="col-lg-4 col-md-6 col-sm-12 order-lg-1 min-vh-100 bg-white order-2">
                     <div class="p-4 m-3">
                         <img src="{{ url('assets/img/avatar/icone.png') }}" alt="logo" width="80"
                             class="shadow-light mb-5 mt-2">
                         <h4 class="text-dark  font-weight-normal">Selamat datang di <br><span class="font-weight-bold">PPDB
-                                SDN 205/IV
+                                PELITA RAYA
                                 Kota Jambi</span>
                         </h4>
                         <p class="text-muted">Sebelum Anda memulai, Anda harus masuk atau mendaftar jika Anda belum
                             memiliki akun.</p>
+
+                        @if (session()->has('siswa'))
+                            @php
+                                $siswa = session('siswa');
+                            @endphp
+
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Hallo {{ $siswa->nama_lengkap }},</strong> Untuk login ke akun kamu, kamu dapat
+                                menggunakan <strong class="text-uppercase"><u>Nomor Register :
+                                        {{ $siswa->no_register }}</u></strong>
+                                dan <strong class="text-uppercase"><u>Tanggal Lahir :
+                                        {{ date('d/m/Y', strtotime($siswa->tgl_lahir)) }}</u></strong>
+                                pada
+                                login di bawah ini
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
 
                         @if (Session::has('success'))
                             <div class="alert alert-success">
@@ -26,8 +54,11 @@
                             </div>
                         @endif
 
+
+
                         <form method="POST" action="{{ route('siswa.loggin') }}" enctype="multipart/form-data">
                             @csrf
+
                             <div class="form-group">
                                 <label for="nisn">Nomor Register</label>
                                 <input type="number" class="form-control @error('no_register') is-invalid @enderror"
@@ -73,7 +104,7 @@
                 </div>
                 <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-200 background-walk-y position-relative overlay-gradient-bottom"
                     data-background="{{ url('assets/img/log.jpg') }}">
-                    <div class="absolute-bottom-left index-2">
+                    {{-- <div class="absolute-bottom-left index-2">
                         <div class="text-light p-5 pb-2">
                             <div class=" pb-3">
                                 <h1 class="mt-2 display-4 font-weight-bold text-uppercase"
@@ -82,9 +113,30 @@
                                     Peserta Didik Baru</h1>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            // Menggunakan event click pada tombol close
+            $('.btn-close').on('click', function() {
+                // Melakukan AJAX request untuk menghapus sesi
+                $.ajax({
+                    url: '/hapus-sesi', // Ganti dengan URL endpoint yang sesuai
+                    method: 'GET', // Sesuaikan dengan metode yang digunakan di backend
+                    success: function(response) {
+                        // Jika penghapusan sesi berhasil, reload halaman
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Tangani kesalahan jika terjadi
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
 @endSection;

@@ -57,6 +57,7 @@ class CreateSiswaTable extends Migration
             $table->text('kk')->nullable();
             $table->text('akte')->nullable();
             $table->text('ijazah_tk')->nullable();
+            $table->text('bukti_bayar')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();

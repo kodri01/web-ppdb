@@ -52,7 +52,7 @@
                                     </div>
 
                                     <div class="modal-footer bg-whitesmoke br">
-                                        <a href="tampilData.php" type="button" class="btn btn-secondary">Batal</a>
+                                        <a href="{{ route('admin') }}" type="button" class="btn btn-secondary">Batal</a>
                                         <button class="btn btn-primary" name="tambahData">Update</button>
                                     </div>
                                 </div>

@@ -121,12 +121,13 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
+        session()->flush();
         return redirect()->route('login');
     }
 
     public function logout_siswa()
     {
-
+        session()->forget('siswa');
         return redirect()->route('siswa.login');
     }
 }

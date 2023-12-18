@@ -53,15 +53,20 @@
 
                     </ul>
                     <div>
-                        <h4 class="text-white mt-2"><strong>PPDB SD Negeri 205/IV Kota Jambi</strong></h4>
+                        <h4 class="text-white mt-2"><strong>PPDB SD Pelita Raya Kota Jambi</strong></h4>
                     </div>
                 </form>
                 <ul class="navbar-nav navbar-right">
                     <!-- klo mau nambah menu notifikasi langsung ke websitenya aja (https://getstisla.com/) -->
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="{{ asset('uploads/' . $siswa->profile) }}"
-                                style="width: 50px;height:50px;" class="rounded-circle mr-1">
+                            @if ($siswa->profile != null)
+                                <img alt="image" src="{{ asset('uploads/' . $siswa->profile) }}"
+                                    style="width: 50px;height:50px;" class="rounded-circle mr-1">
+                            @else
+                                <img alt="image" src="{{ url('assets/img/avatar/avatar-1.png') }}"
+                                    style="width: 50px;height:50px;" class="rounded-circle mr-1">
+                            @endif
                             <h5 class="d-sm-none d-lg-inline-block text-capitalize">{{ $siswa->nama_lengkap }} </h5>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -78,7 +83,7 @@
                     <div class="sidebar-brand">
                         <a href=""><img src="{{ url('assets/img/avatar/icone.png') }}" alt="LP"
                                 width="30px">
-                            SDN 205/IV Kota Jambi</a>
+                            SD Pelita Raya Jambi</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href=""><img src="{{ url('assets/img/avatar/icone.png') }}" alt="LP"
@@ -91,7 +96,25 @@
                         } ?>><a class="nav-link" href="{{ route('dashboard.siswa') }}"><i
                                     class="fas fa-fire"></i>
                                 <span>Dashboard</span></a></li>
+                        <?php if ($siswa->status == 1 && $siswa->ijazah_tk == null) :  ?>
+                        <li <?php if ($title == 'Registrasi Ulang') {
+                            echo 'class="active"';
+                        } ?>><a class="nav-link" href="{{ route('regist.siswa', $siswa->id) }}"><i
+                                    class="fas fa-pen"></i>
+                                <span>Registrasi Ulang</span></a></li>
+
+                        <?php elseif  ($siswa->status == 1 && $siswa->bukti_bayar != null) :  ?>
+                        <div></div>
+                        <?php elseif  ($siswa->status == 0 && $siswa->bukti_bayar == null) :  ?>
+                        <li><a class="nav-link" href="{{ route('dashboard.print') }}"><i class="fas fa-print"></i>
+                                <span>Cetak Nomor Registrasi</span></a></li>
+                        <?php else :  ?>
+                        <div></div>
+                        <?php endif;  ?>
+
+
                     </ul>
+
 
 
                 </aside>

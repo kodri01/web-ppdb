@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="{{ url('assets/bootstrap-4/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/dataTables/css/dataTables.bootstrap4.min.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+    </script> --}}
 
     <!-- CSS Libraries -->
 
@@ -53,7 +53,7 @@
 
                     </ul>
                     <div>
-                        <h4 class="text-white mt-2"><strong>ADMIN PPDB SD Negeri 205/IV Kota Jambi</strong></h4>
+                        <h4 class="text-white mt-2"><strong>ADMIN PPDB SD Pelita Raya Kota Jambi</strong></h4>
                     </div>
                 </form>
                 <ul class="navbar-nav navbar-right">
@@ -78,7 +78,7 @@
                     <div class="sidebar-brand">
                         <a href=""><img src="{{ url('assets/img/avatar/icone.png') }}" alt="LP"
                                 width="30px">
-                            SDN 205/IV Kota Jambi</a>
+                            SD Pelita Raya Jambi</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href=""><img src="{{ url('assets/img/avatar/icone.png') }}" alt="LP"
@@ -103,15 +103,8 @@
                         } ?>><a class="nav-link" href="{{ route('admin') }}"><i
                                     class="fas fa-users"></i>
                                 <span>Admin</span></a></li>
-
-
-
-
                     </ul>
-
-
                 </aside>
             </div>
-
             <!-- Main Content -->
             <div class="main-content">

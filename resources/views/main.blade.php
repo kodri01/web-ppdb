@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>PPDB SDN 205/IV KOTA JAMBI</title>
+    <title>PPDB PELITA RAYA KOTA JAMBI</title>
     <meta content="" name="description">
 
     <!-- Gambar Title -->
@@ -52,9 +52,9 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
                     <li><a class="nav-link scrollto" href="#panduan">Panduan Pendaftaran</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
                     <li class="dropdown"><a href="#"><span>Mulai Daftar</span> <i
                                 class="bi bi-chevron-right"></i></a>
                         <ul>
@@ -77,9 +77,9 @@
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center">
                     <h1 data-aos="fade-up">PPDB</h1>
-                    <h1 data-aos="fade-up">SD NEGERI 205/IV KOTA JAMBI</h1>
+                    <h1 data-aos="fade-up">SD PELITA RAYA KOTA JAMBI</h1>
                     <h2 data-aos="fade-up" data-aos-delay="400">Mari bergabung meraih masa depan gemilang bersama SD
-                        Negeri 205/IV Kota Jambi</h2>
+                        PELITA RAYA Kota Jambi</h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="text-center text-lg-start">
                             <a href="{{ route('siswa.login') }}"
@@ -115,7 +115,7 @@
                                 <li> Calon peserta didik mengisi formulir pendaftaran </li>
                                 <li> Pastikan data yang dimasukkan sudah benar </li>
                                 <li> Login menggunakan akun yang sudah dibuat </li>
-                                <li> Menunggu pengumuman penerimaan siswa baru SD Negeri 205/IV Kota Jambi melalui
+                                <li> Menunggu pengumuman penerimaan siswa baru SD Pelita Raya Kota Jambi melalui
                                     website
                                     PPDB
                                 </li>
@@ -147,8 +147,8 @@
             <div class="container" data-aos="fade-up">
 
                 <header class="section-header">
-                    <h2>Contact</h2>
-                    <p>Contact Us</p>
+                    <h2>Kontak</h2>
+                    <p>Kontak Kami</p>
                 </header>
 
                 <div class="row gy-4">
@@ -159,23 +159,26 @@
                             <div class="info-box">
                                 <i class="bi bi-geo-alt"></i>
                                 <h3>Alamat</h3>
-                                <p> Jalan Kapten Patimura, Kenali Besar, Kecamatan Alam Barajo, Kabupaten Kota Jambi,
-                                    Jambi
+                                <p> Jln. Kopral Ramli, TALANG BAKUNG, Kec. Jambi Selatan, Kota Jambi Prov. Jambi
                                     36129</p>
                             </div>
                             <div class="col-md-6">
-                                <div class="info-box">
-                                    <i class="bi bi-envelope"></i>
-                                    <h3>Email</h3>
-                                    <p>-</p>
-                                </div>
+                                <a href="mailto:rosariimitantyo@yahoo.co.id">
+                                    <div class="info-box">
+                                        <i class="bi bi-envelope"></i>
+                                        <h3>Email</h3>
+                                        <p>rosariimitantyo@yahoo.co.id</p>
+                                    </div>
+                                </a>
                             </div>
                             <div class="col-md-6">
-                                <div class="info-box">
-                                    <i class="bi bi-telephone"></i>
-                                    <h3>Telepon</h3>
-                                    <p>-</p>
-                                </div>
+                                <a href="https://wa.me/6289691339994">
+                                    <div class="info-box">
+                                        <i class="bi bi-telephone"></i>
+                                        <h3>Telepon</h3>
+                                        <p>+62 896-9133-9994</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
 
@@ -236,11 +239,11 @@
                             <img src="assets/img/logo-pbg.png" alt="">
                             <span>PPDB</span>
                         </a>
-                        <p>PPDB merupakan kegiatan Penerimaan Peserta Didik Baru di SD Negeri 205/IV Kota Jambi.
+                        <p>PPDB merupakan kegiatan Penerimaan Peserta Didik Baru di SD Pelita Raya Kota Jambi.
                             Kegiatan
                             PPDB
                             dapat dilakukan melalui website PPDB yang dapat memudahkan wali murid dan calon peserta
-                            didik dalam melakukan pendaftaran sekolah di SD Negeri 205/IV Kota Jambi.</p>
+                            didik dalam melakukan pendaftaran sekolah di SD Pelita Raya Kota Jambi.</p>
                         <div class="social-links mt-3">
                             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -261,11 +264,11 @@
                     <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                         <h4>Contact Us</h4>
                         <p>
-                            Jalan Kapten Patimura, Kenali Besar, Kecamatan Alam Barajo,<br> Kabupaten Kota Jambi,<br>
+                            Jln. Kopral Ramli, TALANG BAKUNG, <br> Kec. Jambi Selatan, Kota Jambi Provinsi Jambi<br>
                             Jambi
                             36129<br>
-                            <strong>Telepon:</strong> -<br>
-                            <strong>Email:</strong> -<br>
+                            <strong>Telepon: +62 896-9133-9994</strong> -<br>
+                            <strong>Email: rosariimitantyo@yahoo.co.id</strong> -<br>
                         </p>
 
                     </div>

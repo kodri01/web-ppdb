@@ -39,7 +39,8 @@
                                             <th>Tanggal Lahir</th>
                                             <th>Jenis Kelamin</th>
                                             <th>Alamat</th>
-                                            <th>Status</th>
+                                            <th>Status Siswa</th>
+                                            <th>Ket</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -53,24 +54,32 @@
                                                 </td>
                                                 <td>{{ $s->jk }}</td>
                                                 <td>{{ $s->alamat }}</td>
-                                                <td>{{ $s->status == 0 ? 'Tidak Lolos' : 'Lolos' }}
+                                                <td>{{ $s->status_siswa }}</td>
+                                                <td>
+                                                    @if ($s->status == 0 && $s->alasan == null)
+                                                        <label for="">Belum diproses</label>
+                                                    @elseif ($s->status == 1 && $s->alasan == null)
+                                                        <label for="">Diterima</label>
+                                                    @elseif ($s->status == 0 && $s->alasan != null)
+                                                        <label for="">Ditolak</label>
+                                                    @endif
                                                 </td>
                                                 <td>
 
                                                     <div class="row">
-                                                        <div class="col-sm-4 col-md-4 col-lg-4  d-inline-flex">
+                                                        {{-- <div class="col-sm-4 col-md-4 col-lg-4  d-inline-flex">
                                                             <form action="{{ route('update.siswa', $s->id) }}"
                                                                 method="post" class="d-inline">
                                                                 @csrf
                                                                 <button class="btn btn-sm btn-success"
                                                                     type="submit">Seleksi</button>
                                                             </form>
-                                                        </div>
-                                                        <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                                        </div> --}}
+                                                        <div class="col-sm-6 col-md-6 col-lg-6 ">
                                                             <a href="{{ route('details.siswa', $s->id) }}"
                                                                 class="btn btn-sm btn-primary ">Details</a>
                                                         </div>
-                                                        <div class="col-sm-4 col-md-4 col-lg-4 d-inline-flex">
+                                                        <div class="col-sm-6 col-md-6 col-lg-6 d-inline-flex">
                                                             <form action="{{ route('delete.siswa', $s->id) }}"
                                                                 method="post" class="d-inline">
                                                                 @csrf

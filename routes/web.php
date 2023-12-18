@@ -30,8 +30,13 @@ Route::get('siswa/register', [RegisterController::class, 'index'])->name('siswa.
 Route::post('store', [RegisterController::class, 'store'])->name('siswa.store');
 
 Route::get('dashboard/siswa', [DashboardController::class, 'dashboard_siswa'])->name('dashboard.siswa');
+Route::get('dashboard/print', [DashboardController::class, 'print_noregist'])->name('dashboard.print');
 Route::get('logout/siswa', [LoginController::class, 'logout_siswa'])->name('logout.siswa');
 
+Route::get('siswa/bayar/{id}', [SiswaController::class, 'bayar'])->name('bayar.siswa');
+Route::post('siswa/bayar/{id}', [SiswaController::class, 'add_bayar'])->name('add_bayar.siswa');
+Route::get('siswa/regist/{id}', [SiswaController::class, 'registrasi_ulang'])->name('regist.siswa');
+Route::post('siswa/regist_ulang/{id}', [SiswaController::class, 'add_regist'])->name('add_regist.siswa');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -51,5 +56,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('siswa/show/{id}', [SiswaController::class, 'show'])->name('details.siswa');
     Route::post('siswa/store', [SiswaController::class, 'store'])->name('store.siswa');
     Route::post('siswa/update/{id}', [SiswaController::class, 'update'])->name('update.siswa');
+    Route::post('siswa/tolak/{id}', [SiswaController::class, 'siswa_tolak'])->name('tolak.siswa');
     Route::delete('siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('delete.siswa');
+});
+
+
+Route::get('/hapus-sesi', function () {
+    // Menghapus sesi 'siswa'
+    session()->forget('siswa');
+    return response()->json(); // Menampilkan pesan berhasil (opsional)
 });

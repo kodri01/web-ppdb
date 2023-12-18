@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -40,93 +41,68 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'nama_sekolah' => 'required',
-            'alamat_sekolah' => 'required',
             'status_siswa' => 'required',
             'name' => 'required',
-            'tempat_lahir' => 'required',
+            'call_name' => 'required',
             'jk' => 'required',
+            'tempat_lahir' => 'required',
             'tgl_lahir' => 'required',
-            'alamat' => 'required',
             'agama' => 'required',
-            'keb_khusus' => 'required',
-            'tempat_tinggal' => 'required',
             'kewarganegaraan' => 'required',
-            'moda_transport' => 'required',
-            'tgl_lahir_ayah' => 'required',
-            'pendapatan_ayah' => 'required',
-            'tgl_lahir_ibu' => 'required',
-            'pendapatan_ibu' => 'required',
-            'rt' => 'required',
-            'rw' => 'required',
-            'dusun' => 'required',
-            'kelurahan' => 'required',
-            'kecamatan' => 'required',
-            'kabupaten' => 'required',
-            'no_telp' => 'required',
             'saudara_kandung' => 'required',
-            'tbadan' => 'required',
-            'bbadan' => 'required',
+            'bahasa' => 'required',
+            'berat_badan' => 'required',
+            'tinggi_badan' => 'required',
+            'gol_darah' => 'required',
+            'penyakit' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
+            'tempat_tinggal' => 'required',
             'zonasi' => 'required',
-            'waktu_tempuh' => 'required',
             'nama_ayah' => 'required',
-            'nik_ayah' => 'required',
             'pend_ayah' => 'required',
             'pekerjaan_ayah' => 'required',
-            'pendapatan_ayah' => 'required',
             'nama_ibu' => 'required',
-            'nik_ibu' => 'required',
             'pend_ibu' => 'required',
             'pekerjaan_ibu' => 'required',
-            'pendapatan_ibu' => 'required',
+            'wali_murid' => 'required',
+            'hub_kel' => 'required',
+            'pend_wali' => 'required',
+            'pekerjaan_wali' => 'required',
             'profile'      => 'required',
-            'kk'      => 'required',
-            'akte'      => 'required',
-            'ijazah_tk'      => 'required',
+            // 'kk'      => 'required',
+            // 'akte'      => 'required',
+            // 'ijazah_tk'      => 'required',
         ];
 
         $messages = [
-            'nama_sekolah.required'  => 'Nama Sekolah Wajib Diisi',
-            'alamat_sekolah.required'  => 'Alamat Sekolah Wajib Diisi',
+
             'status_siswa.required'  => 'Status Siswa Wajib dipilih',
             'name.required' => 'Nama Lengkap Wajib Diisi',
+            'call_name.required' => 'Nama Panggilan Wajib Diisi',
+            'jk.required' => 'Jenis Kelamin Wajid Diisi',
             'tempat_lahir.required' => 'Tempat Lahir Wajib Diisi',
-            'rt.required' => 'RT Wajib Diisi',
-            'rw.required' => 'RW Wajib Diisi',
-            'dusun.required' => 'Nama Dusun Wajib Diisi',
-            'kelurahan.required' => 'Nama Kelurahan Wajib Diisi',
-            'kecamatan.required' => 'Nama Kecamatan Wajib Diisi',
-            'kabupaten.required' => 'Nama Kabupaten Wajib Diisi',
-            'no_telp.required' => 'Nomor Handphone Wajib Diisi',
+            'tgl_lahir.required' => 'Tanggal Lahir Wajid Diisi',
+            'agama.required' => 'Agama Wajid Diisi',
+            'kewarganegaraan.required' => 'Kewarganegaraan Wajid Diisi',
             'saudara_kandung.required' => 'Jumlah Saudara Kandung Wajib Diisi',
-            'tbadan.required' => 'Tinggi Badan Wajib Diisi',
-            'bbadan.required' => 'Berat Badan Wajib Diisi',
+            'bahasa.required' => 'Bahasa sehari-hari Wajib Diisi',
+            'berat_badan.required' => 'Berat Badan Wajib Diisi',
+            'tinggi_badan.required' => 'Tinggi Badan Wajib Diisi',
+            'gol_darah.required' => 'Golongan Darah Wajib Diisi',
+            'penyakit.required' => 'Golongan Darah Wajib Diisi',
+            'alamat.required' => 'Golongan Darah Wajib Diisi',
+            'no_telp.required' => 'Nomor Handphone Wajib Diisi',
+            'tempat_tinggal.required' => 'Jarak Tempuh Wajib Diisi',
             'zonasi.required' => 'Jarak Tempuh Wajib Diisi',
-            'waktu_tempuh.required' => 'Waktu Tempuh Wajib Diisi',
             'nama_ayah.required' => 'Nama Ayah Wajib Diisi',
-            'nik_ayah.required' => 'Nomor NIK Ayah Wajib Diisi',
             'pend_ayah.required' => 'Pendidikan Terakhir Ayah Wajib Diisi',
             'pekerjaan_ayah.required' => 'Pekerjaan Ayah Wajib Diisi',
-            'pendapatan_ayah.required' => 'Pendapatan Ayah Wajib Diisi',
             'nama_ibu.required' => 'Nama Ibu Wajib Diisi',
-            'nik_ibu.required' => 'Nomor NIK Ibu Wajib Diisi',
             'pend_ibu.required' => 'Pendidikan Terakhir Ibu Wajib Diisi',
             'pekerjaan_ibu.required' => 'Pekerjaan Ibu Wajib Diisi',
-            'pendapatan_ibu.required' => 'Pendapatan Ibu Wajib Diisi',
-            'jk.required' => 'Jenis Kelamin Wajid Diisi',
-            'tgl_lahir.required' => 'Tanggal Lahir Wajid Diisi',
-            'alamat.required' => 'Alamat Wajid Diisi',
-            'agama.required' => 'Agama Wajid Diisi',
-            'keb_khusus.required' => 'Kebutuhan Khusus Wajid Diisi',
-            'tempat_tinggal.required' => 'Tempat Tinggal Wajid Diisi',
-            'kewarganegaraan.required' => 'Kewarganegaraan Wajid Diisi',
-            'moda_transport.required' => 'Moda Transportasi Wajid Diisi',
-            'tgl_lahir_ayah.required' => 'Tanggal Lahir Ayah Wajid Diisi',
-            'tgl_lahir_ibu.required' => 'Tanggal Lahir Ibu Wajid Diisi',
+
             'profile.required'  => 'Pas Foto wajib diupload',
-            'kk.required'  => 'File KK wajib diupload',
-            'akte.required'  => 'File Akte wajib diupload',
-            'ijazah_tk.required'  => 'File Ijazah TK wajib diupload',
 
         ];
 
@@ -155,66 +131,66 @@ class RegisterController extends Controller
         $filename  = $namefile . '_' . time() . '.' . $request->profile->extension();
         $request->profile->move(public_path('uploads'), $filename);
 
-        $namefile1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
-        $filename1  = $namefile1 . '_' . time() . '.' . $request->kk->extension();
-        $request->kk->move(public_path('uploads'), $filename1);
+        // $namefile1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
+        // $filename1  = $namefile1 . '_' . time() . '.' . $request->kk->extension();
+        // $request->kk->move(public_path('uploads'), $filename1);
 
-        $namefile2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
-        $filename2  = $namefile2 . '_' . time() . '.' . $request->akte->extension();
-        $request->akte->move(public_path('uploads'), $filename2);
+        // $namefile2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
+        // $filename2  = $namefile2 . '_' . time() . '.' . $request->akte->extension();
+        // $request->akte->move(public_path('uploads'), $filename2);
 
-        $namefile3 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
-        $filename3  = $namefile3 . '_' . time() . '.' . $request->ijazah_tk->extension();
-        $request->ijazah_tk->move(public_path('uploads'), $filename3);
+        // $namefile3 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
+        // $filename3  = $namefile3 . '_' . time() . '.' . $request->ijazah_tk->extension();
+        // $request->ijazah_tk->move(public_path('uploads'), $filename3);
 
         $siswa = Siswa::create([
             'no_register' => $noRegister,
-            'nama_sekolah' => $request->nama_sekolah,
-            'alamat_sekolah' => $request->alamat_sekolah,
             'status_siswa' => $request->status_siswa,
+            'asal_siswa' => $request->asal_siswa,
+            'nama_tk' => $request->nama_tk,
+            'alamat_tk' => $request->alamat_tk,
+            'tgl_sttb' => $request->tgl_sttb,
+            'no_sttb' => $request->no_sttb,
+            'sekolah_asal' => $request->sekolah_asal,
+            'alamat_sekolah' => $request->alamat_sekolah,
+            'dari_kelas' => $request->dari_kelas,
+            'tgl_terima' => $request->tgl_terima,
+            'di_kelas' => $request->di_kelas,
             'nama_lengkap' => $request->name,
+            'nama_panggilan' => $request->call_name,
             'jk' => $request->jk,
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'agama' => $request->agama,
-            'keb_khusus' => $request->keb_khusus,
+            'kewarganegaraan' => $request->kewarganegaraan,
+            'saudara_kandung' => $request->saudara_kandung,
+            'bahasa' => $request->bahasa,
+            'berat_badan' => $request->berat_badan,
+            'tinggi_badan' => $request->tinggi_badan,
+            'gol_darah' => $request->gol_darah,
+            'penyakit' => $request->penyakit,
             'alamat' => $request->alamat,
-            'rt' => $request->rt,
-            'rw' => $request->rw,
-            'dusun' => $request->dusun,
-            'kelurahan' => $request->kelurahan,
-            'kecamatan' => $request->kecamatan,
-            'kabupaten' => $request->kabupaten,
             'no_telp' => $request->no_telp,
             'tempat_tinggal' => $request->tempat_tinggal,
-            'moda_transport' => $request->moda_transport,
-            'kewarganegaraan' => $request->kewarganegaraan,
+            'zonasi' => $request->zonasi,
             'nama_ayah' => $request->nama_ayah,
-            'nik_ayah' => $request->nik_ayah,
-            'tgl_lahir_ayah' => $request->tgl_lahir_ayah,
             'pend_ayah' => $request->pend_ayah,
             'pekerja_ayah' => $request->pekerjaan_ayah,
-            'gaji_ayah' => $request->pendapatan_ayah,
             'nama_ibu' => $request->nama_ibu,
-            'nik_ibu' => $request->nik_ibu,
-            'tgl_lahir_ibu' => $request->tgl_lahir_ibu,
             'pend_ibu' => $request->pend_ibu,
             'pekerja_ibu' => $request->pekerjaan_ibu,
-            'gaji_ibu' => $request->pendapatan_ibu,
-            'tbadan' => $request->tbadan,
-            'bbadan' => $request->bbadan,
-            'zonasi' => $request->zonasi,
-            'waktu_tempuh' => $request->waktu_tempuh,
-            'waktu_tempuh' => $request->waktu_tempuh,
-            'jml_saudara' => $request->saudara_kandung,
+            'wali_murid' => $request->wali_murid,
+            'hub_kel' => $request->hub_kel,
+            'pend_wali' => $request->pend_wali,
+            'pekerjaan_wali' => $request->pekerjaan_wali,
             'profile' => $filename,
-            'kk' => $filename1,
-            'akte' => $filename2,
-            'ijazah_tk' => $filename3,
+            // 'kk' => $filename1,
+            // 'akte' => $filename2,
+            // 'ijazah_tk' => $filename3,
             'status' => 0,
         ]);
         session(['siswa' => $siswa]);
-        return redirect()->route('dashboard.siswa')->with('success', 'Kamu Berhasil Mendaftar, Ditunggu untuk Pemberitahuan Selanjutnya');
+        return redirect()->route('siswa.login');
     }
 
     /**
