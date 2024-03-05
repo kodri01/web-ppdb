@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Pembayaran;
 use App\Models\Siswa;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DashboardController extends Controller
 {
@@ -47,7 +49,8 @@ class DashboardController extends Controller
     {
         $title = 'Registrasi Ulang';
         $siswa = session('siswa');
-        return view('pages.siswa.print_noregist', compact('title', 'siswa'));
+        $pdf = Pdf::loadView('pages.siswa.print_noregist', compact('title', 'siswa'))->setPaper('A4', 'portrait');
+        return $pdf->download('bukti register ' . $siswa->nama_lengkap . date(' d F Y') . '.pdf');
     }
 
     /**

@@ -238,6 +238,30 @@ class SiswaController extends Controller
         return redirect()->route('data.siswa')->with('success', 'Penolakan Siswa Tersimpan');
     }
 
+    public function regist_terima($id)
+    {
+        $siswa = Siswa::find($id);
+        $siswa->update([
+            'regist_status' => 1,
+        ]);
+        session()->forget('siswa');
+        $siswa = Siswa::find($id);
+        session(['siswa' => $siswa]);
+        return redirect()->route('data.siswa')->with('success', 'Registrasi Ulang Diterima');
+    }
+
+    public function regist_tolak($id, Request $request)
+    {
+        $siswa = Siswa::find($id);
+        $siswa->update([
+            'regist_alasan' => $request->alasan,
+        ]);
+        session()->forget('siswa');
+        $siswa = Siswa::find($id);
+        session(['siswa' => $siswa]);
+        return redirect()->route('data.siswa')->with('success', 'Penolakan Registrasi Ulang Tersimpan');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -263,6 +287,26 @@ class SiswaController extends Controller
 
     public function add_bayar($id, Request $request)
     {
+        $rules = [
+            'tgl_tf' => 'required',
+            'rek_bank' => 'required',
+            'nominal' => 'required',
+            'bukti_tf' => 'required',
+        ];
+
+        $messages = [
+            'tgl_tf.required'  => 'Tanggal transfer wajib diisi',
+            'rek_bank.required'  => 'Nomor Rekening wajib dipilih',
+            'nominal.required' => 'Nominal Transfer wajib diisi',
+            'bukti_tf.required' => 'Bukti pembayaran wajib diupload',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $siswa = Siswa::find($id);
         $namefile3 = str_replace(' ', '_', $request->bukti_tf->getClientOriginalName());
         $filename3  = $namefile3 . '_' . time() . '.' . $request->bukti_tf->extension();
@@ -292,33 +336,76 @@ class SiswaController extends Controller
 
     public function add_regist(Request $request, $id)
     {
+        $rules = [
+            // 'profile' => 'required',
+            // 'kk' => 'required',
+            // 'akte' => 'required',
+            // 'ijazah_tk' => 'required',
+            'file_regist' => 'required|mimes:pdf|max:5120'
+        ];
+
+        $messages = [
+            'file_regist.required'  => 'File Registrasi Ulang wajib diupload',
+            'file_regist.max'  => 'Ukuran File Maximal 5MB',
+            'file_regist.mimes'  => 'File dalam bentuk PDF',
+            // 'profile.required'  => 'Photo profile wajib diupload',
+            // 'kk.required'  => 'File KK Wajib Diupload',
+            // 'akte.required' => 'File AKTE Wajib Diupload',
+            // 'ijazah_tk.required' => 'File Ijazah Wajib Diupload',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $siswa = Siswa::find($id);
 
-        $namefile = str_replace(' ', '_', $request->profile->getClientOriginalName());
-        $filename  = $namefile . '_' . time() . '.' . $request->profile->extension();
-        $request->profile->move(public_path('uploads'), $filename);
+        // $namefile = str_replace(' ', '_', $request->profile->getClientOriginalName());
+        // $filename  = $namefile . '_' . time() . '.' . $request->profile->extension();
+        // $request->profile->move(public_path('uploads'), $filename);
 
-        $namefile1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
-        $filename1  = $namefile1 . '_' . time() . '.' . $request->kk->extension();
-        $request->kk->move(public_path('uploads'), $filename1);
+        // $namefile1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
+        // $filename1  = $namefile1 . '_' . time() . '.' . $request->kk->extension();
+        // $request->kk->move(public_path('uploads'), $filename1);
 
-        $namefile2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
-        $filename2  = $namefile2 . '_' . time() . '.' . $request->akte->extension();
-        $request->akte->move(public_path('uploads'), $filename2);
+        // $namefile2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
+        // $filename2  = $namefile2 . '_' . time() . '.' . $request->akte->extension();
+        // $request->akte->move(public_path('uploads'), $filename2);
 
-        $namefile4 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
-        $filename4  = $namefile4 . '_' . time() . '.' . $request->ijazah_tk->extension();
-        $request->ijazah_tk->move(public_path('uploads'), $filename4);
+        // $namefile4 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
+        // $filename4  = $namefile4 . '_' . time() . '.' . $request->ijazah_tk->extension();
+        // $request->ijazah_tk->move(public_path('uploads'), $filename4);
+
+        $filename5 = str_replace(' ', '_', $request->file_regist->getClientOriginalName());
+
+        $request->file_regist->move(public_path('uploads'), $filename5);
+
+        // $file = $request->file('file_regist');
+        // $fileName5 = time() . '_' . $file->getClientOriginalName();
+        // $file->move(public_path('uploads'), $fileName5);
 
         $siswa->update([
-            'profile' => $filename,
-            'kk' => $filename1,
-            'akte' => $filename2,
-            'ijazah_tk' => $filename4,
+            // 'profile' => $filename,
+            // 'kk' => $filename1,
+            // 'akte' => $filename2,
+            // 'ijazah_tk' => $filename4,
+            'file_regist' => $filename5,
+            'regist_status' => null,
+            'regist_alasan' => null,
         ]);
         session()->forget('siswa');
-        $siswa = Siswa::find($id);
+
+        // Set ulang sesi 'siswa' dengan data yang sudah diupdate
         session(['siswa' => $siswa]);
-        return redirect()->route('bayar.siswa', $siswa->id)->with('success', 'Registrasi Ulang Berhasil');
+
+        $siswaBayar = Siswa::with('pembayaran')->find($id);
+
+        if ($siswaBayar->pembayaran === null) {
+            return redirect()->route('bayar.siswa', $siswaBayar->id)->with('success', 'Registrasi Ulang Berhasil');
+        } else {
+            return redirect()->route('dashboard.siswa')->with('success', 'Registrasi Ulang Berhasil');
+        }
     }
 }

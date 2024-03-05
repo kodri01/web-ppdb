@@ -74,7 +74,9 @@
                                                         </div>
                                                     </div>
 
-                                                    <div id="siswa_baru_form" style="display: none;">
+
+                                                    <div id="siswa_baru_form" style="display: none;"
+                                                        class="col-sm-12 col-md-12 col-lg-12">
                                                         <div class="row">
                                                             <div class="col-sm-12 col-md-12 col-lg-12">
                                                                 <div class="form-group">
@@ -85,7 +87,7 @@
                                                                         class="form-control  @error('asal_siswa') is-invalid @enderror"
                                                                         value="{{ old('asal_siswa') }}">
                                                                         <option value="">- Pilih Asal Siswa -</option>
-                                                                        <option value="Rumah Tangga">Rumah Tangga</option>
+                                                                        <option value="Non-TK">Non-TK</option>
                                                                         <option value="TK">Taman Kanak-Kanak</option>
                                                                     </select>
                                                                     @error('asal_siswa')
@@ -133,7 +135,7 @@
                                                                 </div>
                                                                 <div class="col-sm-12 col-md-6 col-lg-6">
                                                                     <div class="form-group">
-                                                                        <label>Tanggal STTB <i
+                                                                        <label>Tanggal Ijazah <i
                                                                                 class="fa fa-solid fa-star-of-life fa-xs"
                                                                                 style="color: red"></i></label>
                                                                         <input type="date"
@@ -147,13 +149,12 @@
                                                                 </div>
                                                                 <div class="col-sm-12 col-md-6 col-lg-6">
                                                                     <div class="form-group">
-                                                                        <label>Nomor STTB <i
+                                                                        <label>Nomor Ijazah <i
                                                                                 class="fa fa-solid fa-star-of-life fa-xs"
                                                                                 style="color: red"></i></label>
                                                                         <input type="text"
                                                                             class="form-control @error('no_sttb') is-invalid @enderror"
-                                                                            name="no_sttb"
-                                                                            placeholder="Nomor dari Surat Tanda Tamat Belajar"
+                                                                            name="no_sttb" placeholder="Nomor Ijazah TK"
                                                                             value="{{ old('no_sttb') }}">
                                                                         @error('no_sttb')
                                                                             <div class="invalid-feedback">{{ $message }}
@@ -503,22 +504,10 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-12 col-md-6 col-lg-6">
-                                                        <div class="form-group">
-                                                            <label for="file">Pas Photo <i
-                                                                    class="fa fa-solid fa-star-of-life fa-xs"
-                                                                    style="color: red"></i></label>
-                                                            <input type="file"
-                                                                class="form-control @error('profile') is-invalid @enderror"
-                                                                name="profile">
-                                                            @error('profile')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
+
                                                 </div>
 
-                                                <div class="section-title mb-4">Informasi Orang Tua</div>
+                                                <div class="section-title mb-4">Informasi Ayah</div>
 
                                                 <div class="row">
                                                     <div class="col-sm-12 col-md-6 col-lg-6">
@@ -561,6 +550,10 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="section-title mb-4">Informasi Ibu</div>
+
+                                                <div class="row">
                                                     <div class="col-sm-12 col-md-6 col-lg-6">
                                                         <div class="form-group">
                                                             <label>Nama Ibu <i class="fa fa-solid fa-star-of-life fa-xs"
@@ -603,7 +596,9 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-
+                                                </div>
+                                                <div class="section-title mb-4">Informasi Wali Murid</div>
+                                                <div class="row">
                                                     <div class="col-sm-12 col-md-6 col-lg-6">
                                                         <div class="form-group">
                                                             <label>Wali Murid (jika ada) <i
@@ -660,33 +655,89 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-
                                                 </div>
-                                                <div class="modal-footer bg-whitesmoke br">
-                                                    <a href="{{ route('/') }}" type="button"
-                                                        class="btn btn-secondary">Batal</a>
-                                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                                <div class="section-title mt-5 mb-4">Kelengkapan Berkas Penunjang</div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="file">Pas Photo <i
+                                                                    class="fa fa-solid fa-star-of-life fa-xs"
+                                                                    style="color: red"></i></label>
+                                                            <input type="file"
+                                                                class="form-control @error('profile') is-invalid @enderror"
+                                                                name="profile" value="{{ old('profile') }}">
+                                                            @error('profile')
+                                                                <div class="text-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="file">Ijazah TK <i
+                                                                    class="fa fa-solid fa-star-of-life fa-xs"
+                                                                    style="color: red"></i></label>
+                                                            <input type="file"
+                                                                class="form-control @error('ijazah_tk') is-invalid @enderror"
+                                                                name="ijazah_tk" value="{{ old('ijazah_tk') }}">
+                                                            @error('ijazah_tk')
+                                                                <div class="text-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="file">File Akte <i
+                                                                    class="fa fa-solid fa-star-of-life fa-xs"
+                                                                    style="color: red"></i></label>
+                                                            <input type="file"
+                                                                class="form-control @error('akte') is-invalid @enderror"
+                                                                name="akte" value="{{ old('akte') }}">
+                                                            @error('akte')
+                                                                <div class="text-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="file">File KK <i
+                                                                    class="fa fa-solid fa-star-of-life fa-xs"
+                                                                    style="color: red"></i></label>
+                                                            <input type="file"
+                                                                class="form-control @error('kk') is-invalid @enderror"
+                                                                name="kk" value="{{ old('kk') }}">
+                                                            @error('kk')
+                                                                <div class="text-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                        <!-- penutup Form Tambah Data -->
-
+                                            <div class="modal-footer bg-whitesmoke br">
+                                                <a href="{{ route('/') }}" type="button"
+                                                    class="btn btn-secondary">Batal</a>
+                                                <button class="btn btn-primary" type="submit">Simpan</button>
+                                            </div>
                                     </div>
+                                    </form>
+                                    <!-- penutup Form Tambah Data -->
+
                                 </div>
                             </div>
                         </div>
                     </div>
             </div>
-            </section>
         </div>
-        <footer class="main-footer">
-            <div>
-                <div class="copyright">
-                    &copy; <strong><span>Universitas Dinamika Bangsa</span></strong> |
-                    {{ \Carbon\Carbon::now()->year }}
-                </div>
+        </section>
+    </div>
+    <footer class="main-footer">
+        <div>
+            <div class="copyright">
+                &copy; <strong><span>Universitas Dinamika Bangsa</span></strong> |
+                {{ \Carbon\Carbon::now()->year }}
             </div>
-        </footer>
+        </div>
+    </footer>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

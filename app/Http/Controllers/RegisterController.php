@@ -131,17 +131,17 @@ class RegisterController extends Controller
         $filename  = $namefile . '_' . time() . '.' . $request->profile->extension();
         $request->profile->move(public_path('uploads'), $filename);
 
-        // $namefile1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
-        // $filename1  = $namefile1 . '_' . time() . '.' . $request->kk->extension();
-        // $request->kk->move(public_path('uploads'), $filename1);
+        $namefile1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
+        $filename1  = $namefile1 . '_' . time() . '.' . $request->kk->extension();
+        $request->kk->move(public_path('uploads'), $filename1);
 
-        // $namefile2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
-        // $filename2  = $namefile2 . '_' . time() . '.' . $request->akte->extension();
-        // $request->akte->move(public_path('uploads'), $filename2);
+        $namefile2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
+        $filename2  = $namefile2 . '_' . time() . '.' . $request->akte->extension();
+        $request->akte->move(public_path('uploads'), $filename2);
 
-        // $namefile3 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
-        // $filename3  = $namefile3 . '_' . time() . '.' . $request->ijazah_tk->extension();
-        // $request->ijazah_tk->move(public_path('uploads'), $filename3);
+        $namefile3 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
+        $filename3  = $namefile3 . '_' . time() . '.' . $request->ijazah_tk->extension();
+        $request->ijazah_tk->move(public_path('uploads'), $filename3);
 
         $siswa = Siswa::create([
             'no_register' => $noRegister,
@@ -184,9 +184,9 @@ class RegisterController extends Controller
             'pend_wali' => $request->pend_wali,
             'pekerjaan_wali' => $request->pekerjaan_wali,
             'profile' => $filename,
-            // 'kk' => $filename1,
-            // 'akte' => $filename2,
-            // 'ijazah_tk' => $filename3,
+            'kk' => $filename1,
+            'akte' => $filename2,
+            'ijazah_tk' => $filename3,
             'status' => 0,
         ]);
         session(['siswa' => $siswa]);

@@ -45,13 +45,27 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="section-title mt-5 mb-4">Kelengkapan Berkas Penunjang</div>
+
+                                    <div class="form-group">
+                                        <label for="file">Upload File Registrasi Ulang <i
+                                                class="fa fa-solid fa-star-of-life fa-xs" style="color: red"></i></label>
+                                        <input type="file"
+                                            class="form-control @error('file_regist') is-invalid @enderror"
+                                            name="file_regist" value="{{ old('file_regist') }}">
+                                        @error('file_regist')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+
+                                    {{-- <div class="section-title mt-5 mb-4">Kelengkapan Berkas Penunjang</div>
                                     <div class="col-sm-12 col-md-6 col-lg-6">
                                         <div class="form-group">
                                             <label for="file">Pas Photo <i class="fa fa-solid fa-star-of-life fa-xs"
                                                     style="color: red"></i></label>
                                             <input type="file"
-                                                class="form-control @error('profile') is-invalid @enderror" name="profile">
+                                                class="form-control @error('profile') is-invalid @enderror" name="profile"
+                                                value="{{ old('profile') }}">
                                             @error('profile')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -63,7 +77,7 @@
                                                     style="color: red"></i></label>
                                             <input type="file"
                                                 class="form-control @error('ijazah_tk') is-invalid @enderror"
-                                                name="ijazah_tk">
+                                                name="ijazah_tk" value="{{ old('ijazah_tk') }}">
                                             @error('ijazah_tk')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -74,7 +88,7 @@
                                             <label for="file">File Akte <i class="fa fa-solid fa-star-of-life fa-xs"
                                                     style="color: red"></i></label>
                                             <input type="file" class="form-control @error('akte') is-invalid @enderror"
-                                                name="akte">
+                                                name="akte" value="{{ old('akte') }}">
                                             @error('akte')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -85,12 +99,12 @@
                                             <label for="file">File KK <i class="fa fa-solid fa-star-of-life fa-xs"
                                                     style="color: red"></i></label>
                                             <input type="file" class="form-control @error('kk') is-invalid @enderror"
-                                                name="kk">
+                                                name="kk" value="{{ old('kk') }}">
                                             @error('kk')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <br>
                                     <div class="modal-footer bg-whitesmoke br">

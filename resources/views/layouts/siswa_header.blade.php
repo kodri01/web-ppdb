@@ -96,7 +96,7 @@
                         } ?>><a class="nav-link" href="{{ route('dashboard.siswa') }}"><i
                                     class="fas fa-fire"></i>
                                 <span>Dashboard</span></a></li>
-                        <?php if ($siswa->status == 1 && $siswa->ijazah_tk == null) :  ?>
+                        <?php if ($siswa->status == 1 && $siswa->file_regist == null) :  ?>
                         <li <?php if ($title == 'Registrasi Ulang') {
                             echo 'class="active"';
                         } ?>><a class="nav-link" href="{{ route('regist.siswa', $siswa->id) }}"><i
@@ -106,8 +106,8 @@
                         <?php elseif  ($siswa->status == 1 && $siswa->bukti_bayar != null) :  ?>
                         <div></div>
                         <?php elseif  ($siswa->status == 0 && $siswa->bukti_bayar == null) :  ?>
-                        <li><a class="nav-link" href="{{ route('dashboard.print') }}"><i class="fas fa-print"></i>
-                                <span>Cetak Nomor Registrasi</span></a></li>
+                        <li><a class="nav-link" href="{{ route('save_pdf') }}"><i class="fas fa-download"></i>
+                                <span>Download No Registrasi</span></a></li>
                         <?php else :  ?>
                         <div></div>
                         <?php endif;  ?>

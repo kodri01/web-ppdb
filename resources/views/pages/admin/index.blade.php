@@ -48,14 +48,18 @@
                                                 <td>
                                                     <a href="{{ route('edit.admin', $a->id) }}"
                                                         class="btn btn-sm btn-primary">Edit</a>
-                                                    <form action="{{ route('delete.admin', $a->id) }}" method="post"
-                                                        class="d-inline">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <button class="btn btn-sm btn-danger"
-                                                            onclick="return confirm('Anda Yakin Akan Menghapus Data Ini ?')"
-                                                            type="submit">Delete</button>
-                                                    </form>
+                                                    @if ($a->id != 1 && $a->id != auth()->user()->id)
+                                                        <form action="{{ route('delete.admin', $a->id) }}" method="post"
+                                                            class="d-inline">
+                                                            @csrf
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <button class="btn btn-sm btn-danger"
+                                                                onclick="return confirm('Anda Yakin Akan Menghapus Data Ini ?')"
+                                                                type="submit">Delete</button>
+                                                        </form>
+                                                    @else
+                                                        <div></div>
+                                                    @endif
                                                 </td>
 
                                             </tr>

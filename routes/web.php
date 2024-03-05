@@ -30,7 +30,7 @@ Route::get('siswa/register', [RegisterController::class, 'index'])->name('siswa.
 Route::post('store', [RegisterController::class, 'store'])->name('siswa.store');
 
 Route::get('dashboard/siswa', [DashboardController::class, 'dashboard_siswa'])->name('dashboard.siswa');
-Route::get('dashboard/print', [DashboardController::class, 'print_noregist'])->name('dashboard.print');
+Route::get('dashboard/print', [DashboardController::class, 'print_noregist'])->name('save_pdf');
 Route::get('logout/siswa', [LoginController::class, 'logout_siswa'])->name('logout.siswa');
 
 Route::get('siswa/bayar/{id}', [SiswaController::class, 'bayar'])->name('bayar.siswa');
@@ -57,6 +57,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('siswa/store', [SiswaController::class, 'store'])->name('store.siswa');
     Route::post('siswa/update/{id}', [SiswaController::class, 'update'])->name('update.siswa');
     Route::post('siswa/tolak/{id}', [SiswaController::class, 'siswa_tolak'])->name('tolak.siswa');
+    Route::post('siswa/regist_terima/{id}', [SiswaController::class, 'regist_terima'])->name('regist_terima.siswa');
+    Route::post('siswa/regist_tolak/{id}', [SiswaController::class, 'regist_tolak'])->name('regist_tolak.siswa');
     Route::delete('siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('delete.siswa');
 });
 

@@ -53,7 +53,8 @@
                                     <div class="form-group">
                                         <label>Transfer Ke Bank<i class="fa fa-solid fa-star-of-life fa-xs"
                                                 style="color: red"></i></label>
-                                        <select name="rek_bank" id="rek_bank" class="form-control">
+                                        <select name="rek_bank" id="rek_bank"
+                                            class="form-control @error('rek_bank') is-invalid @enderror">
                                             <option value="">- Pilih Rekening Tujuan -</option>
                                             <option value="BRI 2277-01-1242-53-7">BRI a.n YAYASAN PELITA RAYA
                                                 2277-01-1242-53-7
@@ -62,6 +63,9 @@
                                                 110-00-0001054-3
                                             </option>
                                         </select>
+                                        @error('rek_bank')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Nominal Transfer</label>

@@ -38,9 +38,9 @@
                                             <th>Nama Lengkap</th>
                                             <th>Tanggal Lahir</th>
                                             <th>Jenis Kelamin</th>
-                                            <th>Alamat</th>
                                             <th>Status Siswa</th>
-                                            <th>Ket</th>
+                                            <th>Status Daftar </th>
+                                            <th>Status Regist Ulang</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -53,19 +53,37 @@
                                                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $s->tgl_lahir)->format('d F Y') }}
                                                 </td>
                                                 <td>{{ $s->jk }}</td>
-                                                <td>{{ $s->alamat }}</td>
                                                 <td>{{ $s->status_siswa }}</td>
                                                 <td>
                                                     @if ($s->status == 0 && $s->alasan == null)
-                                                        <label for="">Belum diproses</label>
+                                                        <label for=""><span
+                                                                class="badge bg-info text-white text-left">Belum
+                                                                <br>
+                                                                Diproses</span></label>
                                                     @elseif ($s->status == 1 && $s->alasan == null)
-                                                        <label for="">Diterima</label>
+                                                        <label for=""><span
+                                                                class="badge bg-success text-white">Diterima</span></label>
                                                     @elseif ($s->status == 0 && $s->alasan != null)
-                                                        <label for="">Ditolak</label>
+                                                        <label for=""><span
+                                                                class="badge bg-danger text-white">Ditolak</span></label>
                                                     @endif
                                                 </td>
                                                 <td>
-
+                                                    @if ($s->regist_status == 0 && $s->regist_alasan == null)
+                                                        <label for=""><span
+                                                                class="badge bg-info text-white text-left">Belum
+                                                                <br>
+                                                                Verifikasi</span></label>
+                                                    @elseif ($s->regist_status == 1 && $s->regist_alasan == null)
+                                                        <label for=""><span
+                                                                class="badge bg-success text-white">Terverikasi</span></label>
+                                                    @elseif ($s->regist_status == 0 && $s->regist_alasan != null)
+                                                        <label for=""><span
+                                                                class="badge bg-danger text-white text-left">Verifikasi <br>
+                                                                Ditolak</span></label>
+                                                    @endif
+                                                </td>
+                                                <td style="width: 150px">
                                                     <div class="row">
                                                         {{-- <div class="col-sm-4 col-md-4 col-lg-4  d-inline-flex">
                                                             <form action="{{ route('update.siswa', $s->id) }}"

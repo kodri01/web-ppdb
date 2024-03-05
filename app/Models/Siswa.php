@@ -55,13 +55,16 @@ class Siswa extends Model
         'kk',
         'akte',
         'ijazah_tk',
+        'file_regist',
         'bukti_bayar',
         'status',
         'alasan',
+        'regist_status',
+        'regist_alasan',
     ];
 
     public function pembayaran()
     {
-        return $this->hasMany(Pembayaran::class, 'id_siswa', 'id');
+        return $this->hasOne(Pembayaran::class, 'id_siswa', 'id');
     }
 }

@@ -133,6 +133,6 @@ class AdminController extends Controller
     {
         User::find($id)->delete();
         return redirect()->route('admin')
-            ->with('error', 'Data Siswa berhasil dihapus');
+            ->with('error', 'Data Admin berhasil dihapus');
     }
 }

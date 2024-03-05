@@ -1,20 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
-    {{-- <style>
-        .d-flex[data-background] {
-            /* Set background image */
-            background-image: url('assets/img/log.jpg');
-            /* Tambahkan properti CSS untuk membuat transparansi */
-            opacity: 0.5;
-            /* Nilai opacity bisa disesuaikan (0.0 hingga 1.0) */
-            /* Properti lain sesuai kebutuhan */
-        }
-    </style> --}}
     <div id="app">
         <section class="section">
-            <div class="d-flex flex-wrap align-items-stretch">
-                <div class="col-lg-4 col-md-6 col-sm-12 order-lg-1 min-vh-100 bg-white order-2">
+            <div class="d-flex flex-wrap align-items-stretch" data-background="{{ url('assets/img/log.jpg') }}">
+                <div class="col-lg-4 col-md-6 col-sm-12 order-lg-1 min-vh-100 order-2">
                     <div class="p-4 m-3">
                         <img src="{{ url('assets/img/avatar/icone.png') }}" alt="logo" width="80"
                             class="shadow-light mb-5 mt-2">
@@ -22,7 +12,9 @@
                                 PELITA RAYA
                                 Kota Jambi</span>
                         </h4>
-                        <p class="text-muted">Sebelum Anda memulai, Anda harus masuk atau mendaftar jika Anda belum
+                        <p class="text-black" style="color: black">Sebelum Anda memulai, Anda harus masuk atau mendaftar
+                            jika Anda
+                            belum
                             memiliki akun.</p>
 
                         @if (session()->has('siswa'))
@@ -87,7 +79,7 @@
                                     Login
                                 </button>
                             </div>
-                            <div class="mt-5 text-center">
+                            <div class="mt-5 text-center" style="color: black">
                                 Belum punya akun? <a href="{{ route('siswa.register') }}">Daftar</a>
                             </div>
                         </form>
@@ -102,20 +94,6 @@
                         </center>
                     </div>
                 </div>
-                <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-200 background-walk-y position-relative overlay-gradient-bottom"
-                    data-background="{{ url('assets/img/log.jpg') }}">
-                    {{-- <div class="absolute-bottom-left index-2">
-                        <div class="text-light p-5 pb-2">
-                            <div class=" pb-3">
-                                <h1 class="mt-2 display-4 font-weight-bold text-uppercase"
-                                    style="text-shadow:  -2px 0px 0px black">Selamat
-                                    Datang
-                                    Peserta Didik Baru</h1>
-                            </div>
-                        </div>
-                    </div> --}}
-                </div>
-            </div>
         </section>
     </div>
 

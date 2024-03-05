@@ -4,37 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            margin: 20px 0;
-        }
-
         .kop-surat {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
             align-items: center;
-            justify-content: center;
+
         }
 
-        .logo {
-            flex-shrink: 0;
-            margin-right: 20px;
-        }
-
-        .logo img {
-            max-width: 100px;
+        .kop-surat img {
+            max-width: 48%;
             height: auto;
+        }
+
+        .kop-surat h4 {
+            width: 48%;
+            /* Menggunakan 48% agar ada ruang antara gambar dan teks */
+            margin: 0;
         }
 
         .garis {
@@ -57,17 +46,6 @@
             border-radius: 8px;
         }
 
-        .row {
-            display: flex;
-            margin-bottom: 5px;
-            justify-content: space-between;
-        }
-
-        .col {
-            /* flex-basis: calc(33.33% - 10px); */
-            /* 33.33% lebar untuk setiap kolom dengan sedikit ruang antar kolom */
-            margin-right: 10px;
-        }
 
         .card2 {
             flex-basis: calc(50% - 20px);
@@ -78,129 +56,130 @@
             padding: 10px;
             box-sizing: border-box;
         }
+
+        .container {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .letterhead {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            /* Garis bawah untuk efek kop surat */
+        }
+
+        .letterhead img {
+            max-width: 100px;
+            /* Sesuaikan lebar maksimum logo */
+            height: auto;
+        }
+
+        .letterhead-text {
+            text-align: center;
+        }
+
+        .letterhead h4,
+        .letterhead span {
+            margin: 0;
+        }
     </style>
 </head>
 
 <body>
 
+    <table style="width: 100%">
+        <tr>
+            <td><img src="assets/img/logo-pbg.png" alt="Logo SD"></td>
+            <td>
+                <h4 style="margin-left:15px;">PENERIMAAN PESERTA DIDIK BARU (PPDB) <br> SD PELITA RAYA KOTA JAMBI <br>
+                    <span> Jl. Kopral Ramli No.17, Talang Bakung, Kec. Jambi Selatan<br>
+                        Kota Jambi, Jambi 36135 Telp: (0741) 571505</span>
+                </h4>
+            </td>
+        </tr>
+    </table>
+
     <div class="container">
-
-
-        <div class="kop-surat">
-            <div class="logo">
-                <img src="{{ url('assets/img/logo-pbg.png') }}" style="width: 100px;height:100px;" alt="Logo SD">
-            </div>
-            <div>
-                <center>
-                    <h3>PENERIMAAN PESERTA DIDIK BARU (PPDB) <br> SD PELITA RAYA KOTA JAMBI <br>
-                        <span> Jl. Kopral Ramli No.17, Talang Bakung, Kec. Jambi Selatan<br>
-                            Kota Jambi, Jambi 36135 Telp: (0741) 571505</span>
-                    </h3>
-                </center>
-            </div>
-        </div>
         <div class="garis"></div>
         <div class="garis"></div>
         <center>
             <h4>PANITIA PENERIMAAN PESERTA DIDIK BARU (PPDB) <br> TAHUN PELAJARAN 2023-2024</h4>
         </center>
-        <div class="card-container">
+        <div class="container">
             <div class="card">
                 <div class="card-tabel">
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
-                                <span>No. Registrasi</span>
-                            </div>
-                            <div class="row">
-                                <span>Status Siswa</span>
-                            </div>
-                            <div class="row">
-                                <span>Nama Siswa</span>
-                            </div>
-                            <div class="row">
-                                <span>Tempat/Tgl. Lahir</span>
-                            </div>
-                            @if ($siswa->status_siswa == 'Siswa Baru')
-                                <div></div>
-                            @else
-                                <div class="row">
-                                    <span>Sekolah Asal</span>
-                                </div>
-                                <div class="row">
-                                    <span>Kelas Sebelumnya</span>
-                                </div>
-                            @endif
-                            <div class="row">
-                                <span>Alamat</span>
-                            </div>
-                            <div class="row">
-                                <span>No. HP/Wa</span>
-                            </div>
-                        </div>
 
-                        <div class="col">
-                            <div class="row">
-                                <span>: {{ $siswa->no_register }}</span>
-                            </div>
-                            <div class="row">
-                                <span>: {{ $siswa->status_siswa }}</span>
-                            </div>
-                            <div class="row">
-                                <span>: {{ $siswa->nama_lengkap }}</span>
-                            </div>
-                            <div class="row">
-                                <span>: {{ $siswa->tempat_lahir }},
-                                    {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $siswa->tgl_lahir)->format('d-m-Y') }}</span>
-                            </div>
-                            @if ($siswa->status_siswa == 'Siswa Baru')
-                                <div></div>
-                            @else
-                                <div class="row">
-                                    <span>: {{ $siswa->sekolah_asal }}</span>
-                                </div>
-                                <div class="row">
-                                    <span>: {{ $siswa->dari_kelas }}</span>
-                                </div>
-                            @endif
-
-                            <div class="row">
-                                <span>: {{ $siswa->alamat }}</span>
-                            </div>
-                            <div class="row">
-                                <span>: {{ $siswa->no_telp }}</span>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <img alt="image" src="{{ asset('uploads/' . $siswa->profile) }}"
-                                style="width: 150px;height:150px;">
-                        </div>
-                    </div>
+                    <table style="width: 100%">
+                        <tr>
+                            <td colspan="4">No. Registrasi</td>
+                            <td>: {{ $siswa->no_register }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Status Siswa</td>
+                            <td>: {{ $siswa->status_siswa }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Nama Siswa</td>
+                            <td>: {{ $siswa->nama_lengkap }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Tempat/Tgl. Lahir</td>
+                            <td>: {{ $siswa->tempat_lahir }},
+                                {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $siswa->tgl_lahir)->format('d-m-Y') }}
+                            </td>
+                        </tr>
+                        @if ($siswa->status_siswa == 'Siswa Baru')
+                            <tr></tr>
+                        @else
+                            <tr>
+                                <td colspan="4">Sekolah Asal</td>
+                                <td>: {{ $siswa->sekolah_asal }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Kelas Sebelumnya</td>
+                                <td>: {{ $siswa->dari_kelas }}</td>
+                            </tr>
+                        @endif
+                        <tr>
+                            <td colspan="4">Alamat</td>
+                            <td>: {{ $siswa->alamat }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">No. Handphone</td>
+                            <td>: {{ $siswa->no_telp }}</td>
+                        </tr>
+                    </table>
                 </div>
-            </div>
-            <div class="card2">
-                <center>
-                    <h3>BUKTI PENDAFTARAN SISWA PADA SEKOLAH DASAR <br> PELITA RAYA KOTA JAMBI</h3>
-                </center>
-            </div>
 
-            <h3>CATATAN PENTING :</h3>
-            <div style="text-align: justify; font-size:12px;">
-                <li>TANDA BUKTI INI DICETAK UNTUK PENGAMBILAN KWITANSI PEMBAYARAN</li>
-                <li>UNTUK PEMBAYARAN DAPAT DILAKUKAN SETIAP HARI SENIN-JUMAT JAM 08.00 WIB s/d 13.00 WIB</li>
-                <li>JIKA SUDAH MELAKUKAN PEMBAYARAN, MAKA SETIAP SISWA WAJIB MELAKUKAN REGISTRASI ULANG MULAI TANGGAL 24
-                    MEI
-                    2024 s/d 15 JUNI 2024</li>
+                {{-- <div class="col">
+                            <img alt="image" src="uploads {{$siswa->profile) }}"
+                                style="width: 150px;height:150px;">
+                        </div> --}}
             </div>
         </div>
+    </div>
+    <div class="card2">
+        <center>
+            <h3>BUKTI PENDAFTARAN SISWA PADA SEKOLAH DASAR <br> PELITA RAYA KOTA JAMBI</h3>
+        </center>
+    </div>
+
+    <h3>CATATAN PENTING :</h3>
+    <div style="text-align: justify; font-size:12px;">
+        <li>TANDA BUKTI INI DICETAK UNTUK PENGAMBILAN KWITANSI PEMBAYARAN</li>
+        <li>UNTUK PEMBAYARAN DAPAT DILAKUKAN SETIAP HARI SENIN-JUMAT JAM 08.00 WIB s/d 13.00 WIB</li>
+        <li>JIKA SUDAH MELAKUKAN PEMBAYARAN, MAKA SETIAP SISWA WAJIB MELAKUKAN REGISTRASI ULANG MULAI TANGGAL 24
+            MEI
+            2024 s/d 15 JUNI 2024</li>
+    </div>
+    </div>
 
 
     </div>
-
 </body>
-<script>
-    window.print();
-</script>
 
 </html>
