@@ -192,8 +192,12 @@ class SiswaController extends Controller
         $title = 'Details Siswa';
         $judul = 'Details Baru';
         $siswa = Siswa::find($id);
+        $extensionKK = pathinfo($siswa->kk, PATHINFO_EXTENSION);
+        $extensionAkte = pathinfo($siswa->akte, PATHINFO_EXTENSION);
+        $extensionTk = pathinfo($siswa->ijazah_tk, PATHINFO_EXTENSION);
+
         $bayar = Pembayaran::where('id_siswa', $siswa->id)->first();
-        return view('pages.siswa.show', compact('judul', 'title', 'siswa', 'bayar'));
+        return view('pages.siswa.show', compact('judul', 'title', 'siswa', 'bayar', 'extensionKK', 'extensionAkte', 'extensionTk'));
     }
 
     /**
@@ -231,11 +235,81 @@ class SiswaController extends Controller
         $siswa = Siswa::find($id);
         $siswa->update([
             'alasan' => $request->alasan,
+            'file_tolak' => $request->file_kk . $request->file_akte . $request->file_tk,
         ]);
         session()->forget('siswa');
         $siswa = Siswa::find($id);
         session(['siswa' => $siswa]);
         return redirect()->route('data.siswa')->with('success', 'Penolakan Siswa Tersimpan');
+    }
+
+    public function edit_tolak($id)
+    {
+        $title = 'Edit File Siswa';
+        $judul = 'Edit File Siswa';
+        $siswa = Siswa::find($id);
+        return view('pages.siswa.edit', compact('judul', 'title', 'siswa'));
+    }
+
+    public function update_tolak($id, Request $request)
+    {
+        $rules = [
+            'kk'      => 'mimes:pdf,jpg,png|max:5120',
+            'akte'      => 'mimes:pdf,jpg,png|max:5120',
+            'ijazah_tk'      => 'mimes:pdf,jpg,png|max:5120',
+        ];
+
+        $messages = [
+            'kk.mimes'  => 'File KK Harus JPG, PNG atau PDF file',
+            'kk.max'  => 'Maximal Size File KK 5MB',
+
+            'akte.mimes'  => 'File Akte Harus JPG, PNG atau PDF file',
+            'akte.max'  => 'Maximal Size File Akte 5MB',
+
+            'ijazah_tk.mimes'  => 'File Ijazah TK Harus JPG, PNG atau PDF file',
+            'ijazah_tk.max'  => 'Maximal Size FIle Ijazah TK 5MB',
+
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if ($request->kk == !null) {
+            $filename1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
+            $request->kk->move(public_path('uploads'), $filename1);
+        } else {
+            $filename1 = $request->kk_asli;
+        }
+
+        if ($request->akte == !null) {
+            $filename2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
+            $request->akte->move(public_path('uploads'), $filename2);
+        } else {
+            $filename2 = $request->akte_asli;
+        }
+
+        if ($request->ijazah_tk == !null) {
+            $filename3 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
+            $request->ijazah_tk->move(public_path('uploads'), $filename3);
+        } else {
+            $filename3 = $request->ijazah_tk_asli;
+        }
+
+        $siswa = Siswa::find($id);
+        $siswa->update([
+            'alasan' => null,
+            'file_tolak' => null,
+            'kk' => $filename1,
+            'akte' => $filename2,
+            'ijazah_tk' => $filename3,
+        ]);
+        session()->forget('siswa');
+        $siswa = Siswa::find($id);
+        session(['siswa' => $siswa]);
+        return redirect()->route('dashboard.siswa')->with('success', 'Update Data Siswa Berhasil');
     }
 
     public function regist_terima($id)
@@ -285,6 +359,16 @@ class SiswaController extends Controller
         return view('pages.siswa.bayar', compact('judul', 'title',  'siswa', 'data', 'bayar'));
     }
 
+    public function edit_bayar($id)
+    {
+        $siswa = Siswa::find($id);
+        $bayar = Pembayaran::where('id_siswa', $siswa->id)->get();
+        $data = session('siswa');
+        $title = 'Pembayaran';
+        $judul = 'Selamat Datang';
+        return view('pages.siswa.edit_bayar', compact('judul', 'title',  'siswa', 'data', 'bayar'));
+    }
+
     public function add_bayar($id, Request $request)
     {
         $rules = [
@@ -321,6 +405,55 @@ class SiswaController extends Controller
         ]);
         session()->forget('siswa');
         $siswa = Siswa::find($id);
+        session(['siswa' => $siswa]);
+        return redirect()->route('dashboard.siswa')->with('success', 'Pembayaran Berhasil');
+    }
+
+    public function update_bayar($id, Request $request)
+    {
+        $rules = [
+            'tgl_tf' => 'required',
+            'rek_bank' => 'required',
+            'nominal' => 'required',
+            'bukti_tf' => 'required',
+        ];
+
+        $messages = [
+            'tgl_tf.required'  => 'Tanggal transfer wajib diisi',
+            'rek_bank.required'  => 'Nomor Rekening wajib dipilih',
+            'nominal.required' => 'Nominal Transfer wajib diisi',
+            'bukti_tf.required' => 'Bukti pembayaran wajib diupload',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $namefile3 = str_replace(' ', '_', $request->bukti_tf->getClientOriginalName());
+        $filename3  = $namefile3 . '_' . time() . '.' . $request->bukti_tf->extension();
+        $request->bukti_tf->move(public_path('uploads'), $filename3);
+
+        $siswa = Siswa::find($id);
+        $bayar = Pembayaran::where('id_siswa', $siswa->id)->get();
+        if ($bayar->isNotEmpty()) {
+            // Loop melalui setiap entri pembayaran dan hapus
+            foreach ($bayar as $p) {
+                $p->update([
+                    'id_siswa' => $id,
+                    'tgl_tf' => $request->tgl_tf,
+                    'rek_bank' => $request->rek_bank,
+                    'nominal' => $request->nominal,
+                    'bukti_tf' => $filename3,
+                ]);
+            }
+        }
+        $siswa->update([
+            'regist_alasan' => null,
+        ]);
+        // session()->forget('siswa');
+        // $siswa = Siswa::find('id', $id);
         session(['siswa' => $siswa]);
         return redirect()->route('dashboard.siswa')->with('success', 'Pembayaran Berhasil');
     }

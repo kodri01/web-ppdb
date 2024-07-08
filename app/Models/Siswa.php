@@ -61,6 +61,7 @@ class Siswa extends Model
         'alasan',
         'regist_status',
         'regist_alasan',
+        'file_tolak',
     ];
 
     public function pembayaran()

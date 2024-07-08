@@ -112,7 +112,9 @@
         <div class="container">
             <div class="card">
                 <div class="card-tabel">
-
+                    {{-- <center>
+                        <img alt="image" src="uploads/<?php echo $siswa->profile; ?>" style="width: 150px;height:150px;">
+                    </center> --}}
                     <table style="width: 100%">
                         <tr>
                             <td colspan="4">No. Registrasi</td>
@@ -154,11 +156,6 @@
                         </tr>
                     </table>
                 </div>
-
-                {{-- <div class="col">
-                            <img alt="image" src="uploads {{$siswa->profile) }}"
-                                style="width: 150px;height:150px;">
-                        </div> --}}
             </div>
         </div>
     </div>

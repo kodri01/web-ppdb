@@ -69,10 +69,10 @@ class RegisterController extends Controller
             'hub_kel' => 'required',
             'pend_wali' => 'required',
             'pekerjaan_wali' => 'required',
-            'profile'      => 'required',
-            // 'kk'      => 'required',
-            // 'akte'      => 'required',
-            // 'ijazah_tk'      => 'required',
+            'profile'      => 'required|mimes:jpg,png|max:5120',
+            'kk'      => 'required|mimes:pdf,jpg,png|max:5120',
+            'akte'      => 'required|mimes:pdf,jpg,png|max:5120',
+            'ijazah_tk'      => 'required|mimes:pdf,jpg,png|max:5120',
         ];
 
         $messages = [
@@ -101,8 +101,21 @@ class RegisterController extends Controller
             'nama_ibu.required' => 'Nama Ibu Wajib Diisi',
             'pend_ibu.required' => 'Pendidikan Terakhir Ibu Wajib Diisi',
             'pekerjaan_ibu.required' => 'Pekerjaan Ibu Wajib Diisi',
-
             'profile.required'  => 'Pas Foto wajib diupload',
+            'profile.mimes'  => 'Pas Foto Harus JPG atau PNG',
+            'profile.max'  => 'Maximal Size Pas Foto 5MB',
+
+            'kk.required'  => 'File KK wajib diupload',
+            'kk.mimes'  => 'File KK Harus JPG, PNG atau PDF file',
+            'kk.max'  => 'Maximal Size File KK 5MB',
+
+            'akte.required'  => 'Akte wajib diupload',
+            'akte.mimes'  => 'File Akte Harus JPG, PNG atau PDF file',
+            'akte.max'  => 'Maximal Size File Akte 5MB',
+
+            'ijazah_tk.required'  => 'Ijazah TK wajib diupload',
+            'ijazah_tk.mimes'  => 'File Ijazah TK Harus JPG, PNG atau PDF file',
+            'ijazah_tk.max'  => 'Maximal Size FIle Ijazah TK 5MB',
 
         ];
 
@@ -131,16 +144,25 @@ class RegisterController extends Controller
         $filename  = $namefile . '_' . time() . '.' . $request->profile->extension();
         $request->profile->move(public_path('uploads'), $filename);
 
-        $namefile1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
-        $filename1  = $namefile1 . '_' . time() . '.' . $request->kk->extension();
+        // $namefile1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
+        // $filename1  = $namefile1 . '_' . time() . '.' . $request->kk->extension();
+        // $request->kk->move(public_path('uploads'), $filename1);
+
+        // $namefile2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
+        // $filename2  = $namefile2 . '_' . time() . '.' . $request->akte->extension();
+        // $request->akte->move(public_path('uploads'), $filename2);
+
+        // $namefile3 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
+        // $filename3  = $namefile3 . '_' . time() . '.' . $request->ijazah_tk->extension();
+        // $request->ijazah_tk->move(public_path('uploads'), $filename3);
+
+        $filename1 = str_replace(' ', '_', $request->kk->getClientOriginalName());
         $request->kk->move(public_path('uploads'), $filename1);
 
-        $namefile2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
-        $filename2  = $namefile2 . '_' . time() . '.' . $request->akte->extension();
+        $filename2 = str_replace(' ', '_', $request->akte->getClientOriginalName());
         $request->akte->move(public_path('uploads'), $filename2);
 
-        $namefile3 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
-        $filename3  = $namefile3 . '_' . time() . '.' . $request->ijazah_tk->extension();
+        $filename3 = str_replace(' ', '_', $request->ijazah_tk->getClientOriginalName());
         $request->ijazah_tk->move(public_path('uploads'), $filename3);
 
         $siswa = Siswa::create([

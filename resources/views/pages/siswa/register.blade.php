@@ -69,14 +69,13 @@
                                                                 class="form-control">
                                                                 <option value="">- Pilih Status Siswa-</option>
                                                                 <option value="Siswa Baru">Siswa Baru</option>
-                                                                <option value="Siswa Pindahan">Siswa Pindahan</option>
+                                                                {{-- <option value="Siswa Pindahan">Siswa Pindahan</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
 
 
-                                                    <div id="siswa_baru_form" style="display: none;"
-                                                        class="col-sm-12 col-md-12 col-lg-12">
+                                                    <div id="siswa_baru_form" class="col-sm-12 col-md-12 col-lg-12">
                                                         <div class="row">
                                                             <div class="col-sm-12 col-md-12 col-lg-12">
                                                                 <div class="form-group">

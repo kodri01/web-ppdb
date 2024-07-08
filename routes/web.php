@@ -35,6 +35,8 @@ Route::get('logout/siswa', [LoginController::class, 'logout_siswa'])->name('logo
 
 Route::get('siswa/bayar/{id}', [SiswaController::class, 'bayar'])->name('bayar.siswa');
 Route::post('siswa/bayar/{id}', [SiswaController::class, 'add_bayar'])->name('add_bayar.siswa');
+Route::get('siswa/edit_bayar/{id}', [SiswaController::class, 'edit_bayar'])->name('edit_bayar.siswa');
+Route::post('siswa/update_bayar/{id}', [SiswaController::class, 'update_bayar'])->name('update_bayar.siswa');
 Route::get('siswa/regist/{id}', [SiswaController::class, 'registrasi_ulang'])->name('regist.siswa');
 Route::post('siswa/regist_ulang/{id}', [SiswaController::class, 'add_regist'])->name('add_regist.siswa');
 
@@ -57,6 +59,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('siswa/store', [SiswaController::class, 'store'])->name('store.siswa');
     Route::post('siswa/update/{id}', [SiswaController::class, 'update'])->name('update.siswa');
     Route::post('siswa/tolak/{id}', [SiswaController::class, 'siswa_tolak'])->name('tolak.siswa');
+    Route::get('siswa/edit/{id}', [SiswaController::class, 'edit_tolak'])->name('edit.siswa');
+    Route::post('siswa/update_tolak/{id}', [SiswaController::class, 'update_tolak'])->name('update_tolak.siswa');
     Route::post('siswa/regist_terima/{id}', [SiswaController::class, 'regist_terima'])->name('regist_terima.siswa');
     Route::post('siswa/regist_tolak/{id}', [SiswaController::class, 'regist_tolak'])->name('regist_tolak.siswa');
     Route::delete('siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('delete.siswa');

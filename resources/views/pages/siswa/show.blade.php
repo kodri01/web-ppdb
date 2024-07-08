@@ -180,27 +180,36 @@
                                             <input type="text" class="form-control" disabled
                                                 value="{{ $siswa->zonasi }} KM" id="specificSizeInputGroupUsername">
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-4 col-lg-4">
-                                                <div class="input-group ">
-                                                    <div class="input-group-text my-2">Pas Photo</div>
-                                                    <div class="show-image d-inline-block" id="show-image"
-                                                        style="width: 150px; height: auto;">
-                                                        <img src='{{ url('uploads/' . $siswa->profile) }}'
-                                                            class="img-fluid img-thumbnail" />
-                                                    </div>
-                                                </div>
+                                        <div class="input-group ">
+                                            <div class="input-group-text my-2">Pas Photo</div>
+                                            <div class="show-image d-inline-block" id="show-image"
+                                                style="width: 150px; height: auto;">
+                                                <img src='{{ url('uploads/' . $siswa->profile) }}'
+                                                    class="img-fluid img-thumbnail" />
                                             </div>
+                                        </div>
+                                        <div class="row">
                                             @if ($siswa->ijazah_tk != null)
                                                 <div class="col-sm-6 col-md-4 col-lg-4">
                                                     <div class="input-group ">
                                                         <div class="input-group-text my-2">Ijazah TK</div>
                                                         <div class="show-image d-inline-block" id="show-image"
                                                             style="width: 150px; height: auto;">
-                                                            <img src='{{ url('uploads/' . $siswa->ijazah_tk) }}'
-                                                                class="img-fluid img-thumbnail" />
+                                                            @if ($extensionTk == 'pdf')
+                                                                <img src='{{ url('assets/img/pdf.png') }}'
+                                                                    class="img-fluid img-thumbnail" />
+                                                            @else
+                                                                <img src='{{ url('uploads/' . $siswa->ijazah_tk) }}'
+                                                                    class="img-fluid img-thumbnail" />
+                                                            @endif
                                                         </div>
+                                                    </div>
+                                                    <div class="my-4 ml-3">
+                                                        <a href="{{ asset('uploads/' . $siswa->ijazah_tk) }}"
+                                                            class="text-black btn btn-lg btn-outline-primary"
+                                                            target="_blank">
+                                                            <i class="fas fa-download"> Ijazah TK </i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             @else
@@ -212,13 +221,30 @@
                                                         <div class="input-group-text my-2">File KK</div>
                                                         <div class="show-image d-inline-block" id="show-image"
                                                             style="width: 150px; height: auto;">
-                                                            <img src='{{ url('uploads/' . $siswa->kk) }}'
-                                                                class="img-fluid img-thumbnail" />
+                                                            @if ($extensionKK == 'pdf')
+                                                                <img src='{{ url('assets/img/pdf.png') }}'
+                                                                    class="img-fluid img-thumbnail" />
+                                                            @else
+                                                                <img src='{{ url('uploads/' . $siswa->kk) }}'
+                                                                    class="img-fluid img-thumbnail" />
+                                                            @endif
+
                                                         </div>
+                                                    </div>
+                                                    <div class="my-4 ml-3">
+                                                        <a href="{{ asset('uploads/' . $siswa->kk) }}"
+                                                            class="text-black btn btn-lg btn-outline-primary"
+                                                            target="_blank">
+                                                            <i class="fas fa-download"> File KK </i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             @else
-                                                <div></div>
+                                                <div class="show-image d-inline-block" id="show-image"
+                                                    style="width: 150px; height: auto;">
+                                                    <img src='{{ url('assets/img/pdf.png') }}'
+                                                        class="img-fluid img-thumbnail" />
+                                                </div>
                                             @endif
                                             @if ($siswa->akte != null)
                                                 <div class="col-sm-6 col-md-4 col-lg-4">
@@ -226,9 +252,22 @@
                                                         <div class="input-group-text my-2">File Akte</div>
                                                         <div class="show-image d-inline-block" id="show-image"
                                                             style="width: 150px; height: auto;">
-                                                            <img src='{{ url('uploads/' . $siswa->akte) }}'
-                                                                class="img-fluid img-thumbnail" />
+
+                                                            @if ($extensionAkte == 'pdf')
+                                                                <img src='{{ url('assets/img/pdf.png') }}'
+                                                                    class="img-fluid img-thumbnail" />
+                                                            @else
+                                                                <img src='{{ url('uploads/' . $siswa->akte) }}'
+                                                                    class="img-fluid img-thumbnail" />
+                                                            @endif
                                                         </div>
+                                                    </div>
+                                                    <div class="my-4 ml-3">
+                                                        <a href="{{ asset('uploads/' . $siswa->akte) }}"
+                                                            class="text-black btn btn-lg btn-outline-primary"
+                                                            target="_blank">
+                                                            <i class="fas fa-download">FIle Akte </i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             @else
@@ -321,9 +360,9 @@
                                                     id="specificSizeInputGroupUsername">
                                             </div>
                                             @if ($bayar->bukti_tf != null)
-                                                <div class="col-sm-6 col-md-4 col-lg-4">
+                                                <div class="w-25">
+                                                    <div class="input-group-text my-2">Bukti Transfer</div>
                                                     <div class="input-group ">
-                                                        <div class="input-group-text my-2">Bukti Transfer</div>
                                                         <div class="show-image d-inline-block" id="show-image">
                                                             <img src='{{ url('uploads/' . $bayar->bukti_tf) }}'
                                                                 class="" style="width: 350px; height: 350px;" />
@@ -347,6 +386,14 @@
                                     @endif
 
                                     @if ($siswa->file_regist != null)
+                                        <div class="input-group-text my-2 w-25">Bukti Registrasi</div>
+                                        <div class="input-group ">
+                                            <div class="show-image d-inline-block" id="show-image"
+                                                style="width: 150px; height: auto;">
+                                                <img src='{{ url('assets/img/pdf.png') }}'
+                                                    class="img-fluid img-thumbnail" />
+                                            </div>
+                                        </div>
                                         <div class="my-4 ml-3">
                                             <a href="{{ asset('uploads/' . $siswa->file_regist) }}"
                                                 class="text-black btn btn-lg btn-outline-primary" target="_blank">
@@ -386,6 +433,47 @@
                                                                     yang
                                                                     logis:</label>
                                                                 <textarea class="form-control" name="alasan" id="message-text"></textarea>
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                                <label for="message-text" class="col-form-label">Dokumen
+                                                                    yang
+                                                                    ditolak:</label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value="1"
+                                                                                id="kk" name="file_kk">
+                                                                            <label class="form-check-label"
+                                                                                for="kk">
+                                                                                File KK
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value="2"
+                                                                                id="akte" name="file_akte">
+                                                                            <label class="form-check-label"
+                                                                                for="akte">
+                                                                                File Akte
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value="3"
+                                                                                id="ijazah_tk" name="file_tk">
+                                                                            <label class="form-check-label"
+                                                                                for="ijazah_tk">
+                                                                                Ijazah TK
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
 
                                                         </div>
@@ -437,16 +525,13 @@
                                         </div>
                                         @if ($siswa->regist_alasan == null && $siswa->regist_status == 0)
                                             {{-- fitur baru --}}
-
-
                                             <div class="col-sm-6">
-
                                                 <div class="row justify-content-end">
-                                                    <label for="" class="my-2"><b>Verifikasi Registrasi Ulang
+                                                    <label for="" class="my-2"><b>Verifikasi Pembayaran
                                                             :</b></label>
                                                     <div class="col-sm-6 col-md-6 col-lg-6">
                                                         <a class="btn btn-danger" onclick="showMessageForm()">Tolak
-                                                            Verifikasi</a>
+                                                            Pembayaran</a>
                                                         <div id="pesanModal" class="modal" tabindex="-1"
                                                             style="display: none; ">
                                                             <div class="modal-dialog">
@@ -459,7 +544,7 @@
                                                                             <h5 class="modal-title"
                                                                                 id="exampleModalLabel">
                                                                                 Alasan
-                                                                                Registrasi Ulang Ditolak
+                                                                                Pembayaran Ditolak
                                                                             </h5>
                                                                             <button type="button" class="btn-close"
                                                                                 onclick="hideMessageForm()"
@@ -523,7 +608,7 @@
                                                             <use xlink:href="#check-circle-fill" />
                                                         </svg>
                                                         <div>
-                                                            &nbsp; &nbsp; REGISTRASI ULANG DITERIMA
+                                                            &nbsp; &nbsp; PEMBAYARAN DITERIMA
                                                         </div>
                                                     </div>
                                                 </div>
@@ -534,7 +619,7 @@
                                                         <use xlink:href="#exclamation-triangle-fill" />
                                                     </svg>
                                                     <div>
-                                                        &nbsp; &nbsp; REGISTRASI ULANG DITOLAK
+                                                        &nbsp; &nbsp; PEMBAYARAN DITOLAK
                                                     </div>
                                                 </div>
                                             @else
